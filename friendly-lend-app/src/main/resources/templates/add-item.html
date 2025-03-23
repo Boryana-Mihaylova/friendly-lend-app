@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <form class="welcome add-offer-form" th:method="POST" th:action="@{/items}" th:object="${createNewItem}">
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add to Closet</span></h1>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="name" class="h4 mb-2">Name</label>
+            </div>
+            <input type="text" class="form-control" id="name" name="name" value="" th:field="*{name}"/>
+            <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="bg-danger text-light rounded">Name error message</small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="description" class="h4 mb-2">Description</label>
+            </div>
+            <input type="text"  class="form-control" id="description" name="description" value="" th:field="*{description}"/>
+            <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="bg-danger text-light rounded">Description error message</small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="imageUrl" class="h4 mb-2">Image URL</label>
+            </div>
+            <textarea type="text" class="form-control" id="imageUrl" name="imageUrl" th:field="*{imageUrl}"></textarea>
+            <small th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="bg-danger text-light rounded">Image URL error message</small>
+        </div>
+
+        </div>
+        <select class="browser-default custom-select" id="category" name="category" th:field="*{category}">
+            <option th:each="category : ${T(app.item.model.Category).values()}" th:value="${category}" th:text="${category}"></option>
+
+        </select>
+        <small th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="bg-danger text-light rounded">Category error message</small>
+
+        </div>
+
+        </div>
+        <select class="browser-default custom-select" id="gender" name="gender" th:field="*{gender}">
+            <option th:each="gender : ${T(app.item.model.Gender).values()}" th:value="${gender}" th:text="${gender}"></option>
+
+        </select>
+        <small th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="bg-danger text-light rounded">Gender error message</small>
+
+        </div>
+
+        </div>
+        <select class="browser-default custom-select" id="size" name="size" th:field="*{size}">
+            <option th:each="size : ${T(app.item.model.SizeItem).values()}" th:value="${size}" th:text="${size}"></option>
+
+        </select>
+        <small th:if="${#fields.hasErrors('size')}" th:errors="*{size}" class="bg-danger text-light rounded">Size error message</small>
+
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="price" class="h4 mb-2">Price</label>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" id="price" name="price" value="1" readonly />
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                </div>
+            </div>
+            <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="bg-danger text-light rounded">Price error message</small>
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-info  mb-3">Add to Closet</button>
+        </div>
+
+    </form>
+</main>
+<footer class="footer bg-transparent py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background footer-text fixed-bottom">
+            &copy; 2025 FriendlyLend. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

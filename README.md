@@ -1,4 +1,4 @@
-FriendlyLend is a web application for sharing and renting clothes and accessories among friends and a close circle of people. The platform is targeted at the younger generation (20-30-year-olds) – active, socially conscious, and digitally connected users who are looking for sustainable and alternative ways to engage with fashion.
+FriendlyLend is a web application for sharing and renting clothes and accessories among friends and a close circle of people. The platform is targeted at Generation Z – active, socially conscious, and digitally connected users who are looking for sustainable and alternative ways to engage with fashion.
 
 Why FriendlyLend?
 

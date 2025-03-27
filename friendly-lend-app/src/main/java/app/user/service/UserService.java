@@ -62,8 +62,7 @@ public class UserService implements UserDetailsService {
 
     }
 
-    // Test Case: When there is no user in the database (repository returns Optional.empty()) - then expect an exception
-    // of type DomainException is thrown
+
     @CacheEvict(value = "users", allEntries = true)
     public void editUserDetails(UUID userId, UserEditRequest userEditRequest) {
 
@@ -73,18 +72,12 @@ public class UserService implements UserDetailsService {
         user.setLastName(userEditRequest.getLastName());
         user.setEmail(userEditRequest.getEmail());
 
-//        if (!userEditRequest.getEmail().isBlank()) {
-//            notificationService.saveNotificationPreference(userId, true, userEditRequest.getEmail());
-//        } else {
-//            notificationService.saveNotificationPreference(userId, false, null);
-//        }
 
         userRepository.save(user);
     }
 
 
-    // В началото се изпълнява веднъж този метод и резултата се пази в кеш
-    // Всяко следващо извикване на този метод ще се чете резултата от кеша и няма да се извиква четенето от базата
+
     @Cacheable("users")
     public List<User> getAllUsers() {
 
@@ -105,21 +98,12 @@ public class UserService implements UserDetailsService {
 
         User user = getById(userId);
 
-        // НАЧИН 1:
-//        if (user.isActive()){
-//            user.setActive(false);
-//        } else {
-//            user.setActive(true);
-//        }
 
-        // false -> true
-        // true -> false
         user.setActive(!user.isActive());
         userRepository.save(user);
     }
 
-    // If user is ADMIN -> USER
-    // If user is USER -> ADMIN
+
     @CacheEvict(value = "users", allEntries = true)
     public void switchRole(UUID userId) {
 

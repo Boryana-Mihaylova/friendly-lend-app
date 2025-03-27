@@ -7,7 +7,7 @@ import lombok.*;
 
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+
 
 
 import java.util.UUID;
@@ -55,6 +55,5 @@ public class Item {
     @ManyToOne(optional = false)
     private User owner;
 
-//    @OneToMany(mappedBy = "item", fetch = FetchType.EAGER)
-//    private List<Review> reviews = new ArrayList<>();
+
 }

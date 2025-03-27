@@ -47,7 +47,7 @@ public class ItemController {
         modelAndView.setViewName("add-item");
 
         modelAndView.addObject("user", user);
-        //добавяме и потребителя, защото това определя какво ще виждаме в хедъра като бутони, когато сме в стамп страницата
+
 
         modelAndView.addObject("createNewItem", CreateNewItem.builder().build());
 

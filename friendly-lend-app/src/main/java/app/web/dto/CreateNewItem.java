@@ -3,6 +3,7 @@ package app.web.dto;
 
 import app.item.model.Category;
 import app.item.model.Gender;
+import app.item.model.Period;
 import app.item.model.SizeItem;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -40,4 +41,7 @@ public class CreateNewItem {
 
     @NotNull
     private BigDecimal price = BigDecimal.ONE;
+
+    @NotNull(message = "Please select a rental period type!")
+    private Period period;
 }

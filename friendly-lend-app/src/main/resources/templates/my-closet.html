@@ -24,6 +24,7 @@
                                 <th>Gender</th>
                                 <th>Size</th>
                                 <th>Price</th>
+                                <th>Rental Period</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,6 +50,9 @@
                                 </td>
                                 <td>
                                     <span th:text="${item.price + ' €'}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${item.period}"></span>
                                 </td>
                             </tr>
                             </tbody>

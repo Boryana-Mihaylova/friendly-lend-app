@@ -15,7 +15,6 @@
             <input type="text" class="form-control" id="name" name="name" value="" th:field="*{name}"/>
             <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="bg-danger text-light rounded">Name error message</small>
         </div>
-
         <div class="form-group">
             <div class="label-holder text-white textCol d-flex justify-content-center">
                 <label for="description" class="h4 mb-2">Description</label>
@@ -23,7 +22,6 @@
             <input type="text"  class="form-control" id="description" name="description" value="" th:field="*{description}"/>
             <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="bg-danger text-light rounded">Description error message</small>
         </div>
-
         <div class="form-group">
             <div class="label-holder text-white textCol d-flex justify-content-center">
                 <label for="imageUrl" class="h4 mb-2">Image URL</label>
@@ -31,7 +29,6 @@
             <textarea type="text" class="form-control" id="imageUrl" name="imageUrl" th:field="*{imageUrl}"></textarea>
             <small th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="bg-danger text-light rounded">Image URL error message</small>
         </div>
-
         </div>
         <select class="browser-default custom-select" id="category" name="category" th:field="*{category}">
             <option th:each="category : ${T(app.item.model.Category).values()}" th:value="${category}" th:text="${category}"></option>
@@ -40,7 +37,6 @@
         <small th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="bg-danger text-light rounded">Category error message</small>
 
         </div>
-
         </div>
         <select class="browser-default custom-select" id="gender" name="gender" th:field="*{gender}">
             <option th:each="gender : ${T(app.item.model.Gender).values()}" th:value="${gender}" th:text="${gender}"></option>
@@ -49,7 +45,6 @@
         <small th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="bg-danger text-light rounded">Gender error message</small>
 
         </div>
-
         </div>
         <select class="browser-default custom-select" id="size" name="size" th:field="*{size}">
             <option th:each="size : ${T(app.item.model.SizeItem).values()}" th:value="${size}" th:text="${size}"></option>
@@ -71,7 +66,17 @@
             </div>
             <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="bg-danger text-light rounded">Price error message</small>
         </div>
+        </div>
+        <div class="label-holder text-white textCol d-flex justify-content-center">
+            <label for="period" class="h4 mb-2">Rental Period</label>
+        </div>
+        <select class="browser-default custom-select" id="period" name="period" th:field="*{period}">
+            <option th:each="period : ${T(app.item.model.Period).values()}" th:value="${period}" th:text="${period}"></option>
 
+        </select>
+        <small th:if="${#fields.hasErrors('period')}" th:errors="*{period}" class="bg-danger text-light rounded">Period error message</small>
+
+        </div>
         <div class="button-holder d-flex justify-content-center">
             <button type="submit" class="btn btn-info  mb-3">Add to Closet</button>
         </div>

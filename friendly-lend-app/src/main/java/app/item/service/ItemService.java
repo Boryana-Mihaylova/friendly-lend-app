@@ -2,6 +2,8 @@ package app.item.service;
 
 
 import app.exception.DomainException;
+
+
 import app.item.model.Item;
 import app.item.repository.ItemRepository;
 import app.user.model.User;
@@ -41,6 +43,7 @@ public class ItemService {
                 .gender(createNewItem.getGender())
                 .size(createNewItem.getSize())
                 .price(BigDecimal.valueOf(1.00))
+                .period(createNewItem.getPeriod())
                 .owner(user)
                 .build();
 

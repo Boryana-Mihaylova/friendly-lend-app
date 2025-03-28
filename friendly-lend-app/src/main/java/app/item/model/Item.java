@@ -49,6 +49,10 @@ public class Item {
     @Column(nullable = false)
     private BigDecimal price;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Period period;
+
 
 
 

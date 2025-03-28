@@ -8,7 +8,7 @@ import lombok.Data;
 public class LoginRequest {
 
     @NotBlank(message = "Username cannot be empty")
-    @Size(min = 6, message = "Username must be at least 6 symbols")
+    @Size(min = 3, message = "Username must be at least 3 symbols")
     private String username;
 
     @NotBlank(message = "Password cannot be empty")

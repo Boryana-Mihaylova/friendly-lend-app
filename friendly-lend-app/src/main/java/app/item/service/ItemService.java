@@ -6,6 +6,7 @@ import app.exception.DomainException;
 
 import app.item.model.Item;
 import app.item.repository.ItemRepository;
+import app.purchase.repository.PurchaseRepository;
 import app.user.model.User;
 
 import app.web.dto.CreateNewItem;
@@ -27,13 +28,16 @@ public class ItemService {
     private final ItemRepository itemRepository;
     private final PasswordEncoder passwordEncoder;
 
+    private final PurchaseRepository purchaseRepository;
+
 
     @Autowired
-    public ItemService(ItemRepository itemRepository, PasswordEncoder passwordEncoder) {
+    public ItemService(ItemRepository itemRepository, PasswordEncoder passwordEncoder, PurchaseRepository purchaseRepository) {
 
         this.itemRepository = itemRepository;
         this.passwordEncoder = passwordEncoder;
 
+        this.purchaseRepository = purchaseRepository;
     }
 
     public Item create(CreateNewItem createNewItem, User user) {
@@ -74,12 +78,21 @@ public class ItemService {
     }
 
     public List<Item> getItemsFromOthers(UUID userId) {
-
+        // Взимаме всички артикули
         List<Item> allItems = itemRepository.findAll();
 
+        // Вземаме списък с всички вече наети артикули
+        List<UUID> rentedItemIds = purchaseRepository.findAll()
+                .stream()
+                .map(itemPurchase -> itemPurchase.getItem().getId()) // Вземаме ID на артикула
+                .collect(Collectors.toList());
 
+        // Филтрираме артикулите, като изключваме тези, които:
+        // - принадлежат на текущия потребител
+        // - вече са наети
         return allItems.stream()
-                .filter(item -> !item.getOwner().getId().equals(userId)) // филтрираме по ownerId
+                .filter(item -> !item.getOwner().getId().equals(userId)) // Премахваме артикулите на текущия потребител
+                .filter(item -> !rentedItemIds.contains(item.getId())) // Премахваме вече наетите артикули
                 .collect(Collectors.toList());
     }
 
@@ -100,6 +113,7 @@ public class ItemService {
                 .period(item.getPeriod())
                 .size(item.getSize())
                 .price(item.getPrice())
+                .itemId(item.getId())
                 .build();
     }
 

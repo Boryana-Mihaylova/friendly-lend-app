@@ -12,6 +12,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Builder
 @Data
@@ -29,17 +30,21 @@ public class ItemPurchaseRequest {
     @URL(message = "Please enter a valid image URL!")
     private String imageUrl;
 
-    @NotNull(message = "You must select a size!")
+    @NotNull(message = "You must select a gender!")
     private Gender gender;
 
     @NotNull(message = "You must select a size!")
     private SizeItem size;
 
-    @NotNull(message = "You must select a size!")
+    @NotNull(message = "Price must be provided!")
     private BigDecimal price = BigDecimal.ONE;
 
-    @NotNull(message = "You must select a size!")
+    @NotNull(message = "You must select a rental period!")
     private Period period;
+
+
+    @NotNull(message = "Item ID cannot be null!")
+    private UUID itemId;
 
 
 

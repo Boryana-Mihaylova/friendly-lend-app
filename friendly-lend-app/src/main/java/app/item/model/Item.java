@@ -1,6 +1,7 @@
 package app.item.model;
 
 
+import app.purchase.model.ItemPurchase;
 import app.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +10,8 @@ import lombok.*;
 import java.math.BigDecimal;
 
 
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -58,6 +60,9 @@ public class Item {
 
     @ManyToOne(optional = false)
     private User owner;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
+    private List<ItemPurchase> purchases = new ArrayList<>();
 
 
 }

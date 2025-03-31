@@ -3,6 +3,7 @@ package app.web.mapper;
 
 import app.item.model.Item;
 import app.item.service.ItemService;
+import app.purchase.service.PurchaseService;
 import app.security.AuthenticationMetadata;
 import app.user.model.User;
 import app.user.service.UserService;
@@ -31,10 +32,13 @@ public class ItemController {
     private final UserService userService;
     private final ItemService itemService;
 
+    private final PurchaseService purchaseService;
+
     @Autowired
-    public ItemController(UserService userService, ItemService itemService) {
+    public ItemController(UserService userService, ItemService itemService, PurchaseService purchaseService) {
         this.userService = userService;
         this.itemService = itemService;
+        this.purchaseService = purchaseService;
     }
 
 
@@ -118,6 +122,7 @@ public class ItemController {
 
         ItemPurchaseRequest itemPurchaseRequest = itemService.convertToItemPurchase(item);
 
+        purchaseService.createPurchase(itemPurchaseRequest, user);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("my-bag");

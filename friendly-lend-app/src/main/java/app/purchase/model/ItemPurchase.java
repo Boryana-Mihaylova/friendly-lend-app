@@ -1,6 +1,7 @@
 package app.purchase.model;
 
 import app.item.model.Gender;
+import app.item.model.Item;
 import app.item.model.Period;
 import app.item.model.SizeItem;
 import app.user.model.User;
@@ -46,5 +47,9 @@ public class ItemPurchase {
 
     @ManyToOne(optional = false)
     private User owner;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Item item;
 
 }

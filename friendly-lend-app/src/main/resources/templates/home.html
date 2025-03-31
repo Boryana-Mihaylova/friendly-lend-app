@@ -56,8 +56,16 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-<!--    </div>-->
-
+        <div class="col-6 mt-1 mb-1">
+            <div class="home-fields" style="height: 30vh; overflow: auto">
+                <h3 class="my-stamps">Profile</h3>
+                <p>See your Profile or edit  with the 'Edit Profile' button.</p>
+                <div class="button-container">
+                    <a th:href="@{'/users/' + ${user.id} + '/my-profile'}" class="btn btn-light">Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </main>
 <footer class="footer bg-transparent py-2">

@@ -59,9 +59,6 @@
                                     <span th:text="${item.owner.getUsername()}"></span>
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary">Rent Now</a>
-                                </td>
-                                <td>
                                     <a th:if="${user}" th:href="@{/items/rent-to-bag/{id}(id=${item.id})}" class="btn btn-light">Rent Now</a>
                                 </td>
                             </tr>

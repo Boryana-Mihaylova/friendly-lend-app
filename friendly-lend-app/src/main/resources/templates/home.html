@@ -9,20 +9,55 @@
         <p class="mySticky bg-gray text-dark user" th:text="${'Welcome ' + user.username}"></p>
         <div class="row mt-1 mb-2">
             <div class="col-6 mt-1 mb-1">
-                <div>
-                    <div class="home-fields" style="height: 80vh; overflow: auto">
-                        <h3 class="my-items">
-                            My Lending Closet
-                        </h3>
-                        <p>See your offers or add something new with the 'Add Item' button.</p>
-
-                        <div class="button-container">
-                            <a th:href="@{/items/my-closet}" class="btn btn-light">My Lending Closet</a>
-                        </div>
+                <div class="home-fields" style="height: 30vh; overflow: auto">
+                    <h3 class="my-stamps">
+                        My Lending Closet
+                    </h3>
+                    <p>See your offers or add something new with the 'Add Item' button.</p>
+                    <!-- Каре с бутона вътре -->
+                    <div class="button-container">
+                        <a th:href="@{/items/my-closet}" class="btn btn-light">My Lending Closet</a>
+                    </div>
                 </div>
             </div>
+
+            <div class="col-6 mt-1 mb-1">
+                <div class="home-fields" style="height: 30vh; overflow: auto">
+                    <h3 class="my-stamps">Offered Items</h3>
+                    <p>See all offers from other people.</p>
+                    <!-- Каре с бутона вътре -->
+                    <div class="button-container">
+                        <a th:href="@{/items/offers}" class="btn btn-light">Offered Items</a>
+                    </div>
+                </div>
             </div>
         </div>
+
+<!--        <div class="col-6 mt-1 mb-1">-->
+<!--            <div class="home-fields" style="height: 30vh; overflow: auto">-->
+<!--                <h3 class="my-stamps">-->
+<!--                    My Reviews-->
+<!--                </h3>-->
+<!--                <p>See your reviews or add new opinion with the 'Add Review' button.</p>-->
+<!--                &lt;!&ndash; Каре с бутона вътре &ndash;&gt;-->
+<!--                <div class="button-container">-->
+<!--                    <a th:href="@{/reviews/my-review}" class="btn btn-light">My Reviews</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="col-6 mt-1 mb-1">-->
+<!--            <div class="home-fields" style="height: 30vh; overflow: auto">-->
+<!--                <h3 class="my-stamps">Delivery Location</h3>-->
+<!--                <p>See your Delivery Location or edit  with the 'Edit Delivery Location' button.</p>-->
+<!--                &lt;!&ndash; Каре с бутона вътре &ndash;&gt;-->
+<!--                <div class="button-container">-->
+<!--                    <a th:href="@{/locations/my-location}" class="btn btn-light">My Delivery Location</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
     </div>
 </main>
 <footer class="footer bg-transparent py-2">

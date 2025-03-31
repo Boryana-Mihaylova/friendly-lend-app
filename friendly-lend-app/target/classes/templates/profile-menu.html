@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+        <form class="welcome add-offer-form" th:method="PUT" th:action="@{'/users/' + ${user.id} + '/profile'}" th:object="${userEditRequest}">
+            <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Profile</span></h1>
+
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <label for="firstName" class="h4 mb-2">FirstName</label>
+                </div>
+                <input type="text" class="form-control" id="firstName" name="firstName" value="" th:field="*{firstName}"/>
+                <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="bg-danger text-light rounded">FirstName error message</small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <label for="lastName" class="h4 mb-2">LastName</label>
+                </div>
+                <input type="text"  class="form-control" id="lastName" name="lastName" value="" th:field="*{lastName}"/>
+                <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="bg-danger text-light rounded">LastName error message</small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <label for="email" class="h4 mb-2">Email</label>
+                </div>
+                <textarea type="text" class="form-control" id="email" name="email" th:field="*{email}"></textarea>
+                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="bg-danger text-light rounded">Email error message</small>
+            </div>
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-info  mb-3">Save</button>
+            </div>
+        </form>
+</main>
+<footer class="footer bg-transparent py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background footer-text fixed-bottom">
+            &copy; 2025 FriendlyLend. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

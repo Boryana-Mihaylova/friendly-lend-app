@@ -9,13 +9,16 @@ import app.item.repository.ItemRepository;
 import app.user.model.User;
 
 import app.web.dto.CreateNewItem;
+import app.web.dto.ItemPurchaseRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -70,6 +73,34 @@ public class ItemService {
         return itemRepository.findByOwnerId(ownerId);
     }
 
+    public List<Item> getItemsFromOthers(UUID userId) {
 
+        List<Item> allItems = itemRepository.findAll();
+
+
+        return allItems.stream()
+                .filter(item -> !item.getOwner().getId().equals(userId)) // филтрираме по ownerId
+                .collect(Collectors.toList());
+    }
+
+    public Item getItemById(UUID id) {
+        // Използваме Optional, за да проверим дали артикулът съществува
+        Optional<Item> itemOptional = itemRepository.findById(id);
+
+        // Връщаме артикула, ако съществува, или хвърляме изключение, ако не
+        return itemOptional.orElseThrow(() -> new DomainException("Item with id [%s] does not exist.".formatted(id)));
+    }
+
+    public ItemPurchaseRequest convertToItemPurchase(Item item) {
+        return ItemPurchaseRequest.builder()
+                .name(item.getName())
+                .description(item.getDescription())
+                .imageUrl(item.getImageUrl())
+                .gender(item.getGender())
+                .period(item.getPeriod())
+                .size(item.getSize())
+                .price(item.getPrice())
+                .build();
+    }
 
 }

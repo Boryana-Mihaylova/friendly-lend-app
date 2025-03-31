@@ -9,6 +9,7 @@ import app.user.service.UserService;
 import app.web.dto.CreateNewItem;
 
 
+import app.web.dto.ItemPurchaseRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -89,6 +90,42 @@ public class ItemController {
         modelAndView.addObject("items", items);
 
         return modelAndView;
+    }
+
+    @GetMapping("/offers")
+    public ModelAndView getItemsForOthers(@AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
+
+        User user = userService.getById(authenticationMetadata.getUserId());
+
+
+        List<Item> itemsFromOthers = itemService.getItemsFromOthers(authenticationMetadata.getUserId());
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("offers");
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("itemsFromOthers", itemsFromOthers);
+
+        return modelAndView;
+    }
+
+    @GetMapping("/rent-to-bag/{id}")
+    public ModelAndView getNewPurchase(@PathVariable UUID id, @AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
+
+        User user = userService.getById(authenticationMetadata.getUserId());
+
+
+        Item item = itemService.getItemById(id);
+
+        ItemPurchaseRequest itemPurchaseRequest = itemService.convertToItemPurchase(item);
+
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("my-bag");
+        modelAndView.addObject("ItemPurchaseRequest", itemPurchaseRequest);
+        modelAndView.addObject("user", user);
+
+        return modelAndView;
+
     }
 
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <form class="welcome add-offer-form" th:method="POST" th:action="@{/surveys}" th:object="${surveyRequest}">
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Support</span></h1>
+
+        </div>
+        <div class="label-holder text-white textCol d-flex justify-content-center">
+            <label for="subject" class="h4 mb-2">Subject</label>
+        </div>
+            <select class="browser-default custom-select" id="subject" name="subject" th:field="*{subject}">
+                <option th:each="subject : ${T(app.survey.client.dto.Subject).values()}" th:value="${subject}" th:text="${subject}"></option>
+            </select>
+            <small th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" class="bg-danger text-light rounded">Subject error message</small>
+        </div>
+
+        </div>
+        <div class="label-holder text-white textCol d-flex justify-content-center">
+            <label for="support" class="h4 mb-2">Support</label>
+        </div>
+        <select class="browser-default custom-select" id="support" name="support" th:field="*{support}">
+            <option th:each="support : ${T(app.survey.client.dto.Support).values()}" th:value="${support}" th:text="${support}"></option>
+        </select>
+        <small th:if="${#fields.hasErrors('support')}" th:errors="*{support}" class="bg-danger text-light rounded">Support error message</small>
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-info  mb-3">Add to Closet</button>
+        </div>
+    </form>
+</main>
+<footer class="footer bg-transparent py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background footer-text fixed-bottom">
+            &copy; 2025 FriendlyLend. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -32,30 +32,44 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-1 mb-2">
+            <div class="col-6 mt-1 mb-1">
+                <div class="home-fields" style="height: 30vh; overflow: auto">
+                    <h3 class="my-stamps">
+                        My Reviews
+                    </h3>
+                    <p>See your reviews or add new opinion with the 'Add Review' button.</p>
+                    <!-- Каре с бутона вътре -->
+                    <div class="button-container">
+                        <a th:href="@{/reviews/my-review}" class="btn btn-light">My Reviews</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 mt-1 mb-1">
+                <div class="home-fields" style="height: 30vh; overflow: auto">
+                    <h3 class="my-stamps">Our Eco Surveys</h3>
+                    <p>Explore our surveys and show your support for one of them with the 'Support Survey' button.</p>
+                    <div class="button-container">
+                        <a th:href="@{/surveys/user-survey}" class="btn btn-light">My Survey Support</a>
+                    </div>
 
-<!--        <div class="col-6 mt-1 mb-1">-->
-<!--            <div class="home-fields" style="height: 30vh; overflow: auto">-->
-<!--                <h3 class="my-stamps">-->
-<!--                    My Reviews-->
-<!--                </h3>-->
-<!--                <p>See your reviews or add new opinion with the 'Add Review' button.</p>-->
-<!--                &lt;!&ndash; Каре с бутона вътре &ndash;&gt;-->
-<!--                <div class="button-container">-->
-<!--                    <a th:href="@{/reviews/my-review}" class="btn btn-light">My Reviews</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+                    <p>SUSTAINABILITY – Sustainable clothing consumption reduces overproduction and preserves valuable natural resources.</p>
+                    <p>ENVIRONMENT – By renting clothes instead of buying new ones, we reduce plastic pollution from synthetic materials and waste.</p>
+                    <p>RECYCLING – Giving clothes a second life through reuse extends their lifespan and reduces textile waste.</p>
+                </div>
+            </div>
+        </div>
 
-<!--        <div class="col-6 mt-1 mb-1">-->
-<!--            <div class="home-fields" style="height: 30vh; overflow: auto">-->
-<!--                <h3 class="my-stamps">Delivery Location</h3>-->
-<!--                <p>See your Delivery Location or edit  with the 'Edit Delivery Location' button.</p>-->
-<!--                &lt;!&ndash; Каре с бутона вътре &ndash;&gt;-->
-<!--                <div class="button-container">-->
-<!--                    <a th:href="@{/locations/my-location}" class="btn btn-light">My Delivery Location</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="col-6 mt-1 mb-1">
+            <div class="home-fields" style="height: 30vh; overflow: auto">
+                <h3 class="my-stamps">Delivery Location</h3>
+                <p>See your Delivery Location or edit  with the 'Edit Delivery Location' button.</p>
+                <!-- Каре с бутона вътре -->
+                <div class="button-container">
+                    <a th:href="@{/locations/my-location}" class="btn btn-light">My Delivery Location</a>
+                </div>
+            </div>
+        </div>
         <div class="col-6 mt-1 mb-1">
             <div class="home-fields" style="height: 30vh; overflow: auto">
                 <h3 class="my-stamps">Profile</h3>
@@ -65,6 +79,17 @@
                 </div>
             </div>
         </div>
+
+<!--        <div class="col-6 mt-1 mb-1">-->
+<!--            <div class="home-fields" style="height: 30vh; overflow: auto">-->
+<!--                <h3 class="my-stamps">Users</h3>-->
+<!--                <p>See Users Menu or edit  with the 'Edit Users Role' button.</p>-->
+<!--                <div class="button-container">-->
+<!--                    <a th:href="@{'/users/' + ${user.id} + '/my-users'}" class="btn btn-light">Users Menu</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
     </div>
     </div>
 </main>

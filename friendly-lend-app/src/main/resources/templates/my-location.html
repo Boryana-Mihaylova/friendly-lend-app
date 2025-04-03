@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <div class="welcome mt-1 mb-4">
+        <p class="mySticky bg-gray text-dark user" th:text="${'Welcome ' + user.username}"></p>
+        <div class="row mt-1 mb-2">
+            <div class="col-12 mt-1 mb-1">
+                <div class="my-closet">
+                    <h2>My Delivery Location</h2>
+
+
+                    <div class="home-fields" style="height: 80vh; overflow: auto">
+                        <table class="my-table table-striped table-dark">
+                            <thead>
+                            <tr>
+                                <th>Delivery Location</th>
+                                <th>Town</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Чрез this we loop през всички артикули на потребителя -->
+                            <tr th:each="location : ${locations}">
+                                <td>
+                                    <span th:text="${location.getLocation()}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${location.getTown()}"></span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer bg-transparent py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background footer-text fixed-bottom">
+            &copy; 2025 FriendlyLend. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

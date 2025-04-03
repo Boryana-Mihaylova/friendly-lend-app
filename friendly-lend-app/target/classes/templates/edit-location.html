@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <form class="welcome add-offer-form" th:method="POST" th:action="@{/locations}" th:object="${locationEditRequest}">
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Edit Delivery Location</span></h1>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="location" class="h4 mb-2">Location</label>
+            </div>
+
+        </div>
+        <select class="browser-default custom-select" id="location" name="location" th:field="*{location}">
+            <option th:each="location : ${T(app.deliveryLocation.model.Location).values()}" th:value="${location}" th:text="${location}"></option>
+
+        </select>
+        <small th:if="${#fields.hasErrors('location')}" th:errors="*{location}" class="bg-danger text-light rounded">Location error message</small>
+
+        </div>
+
+        </div>
+        <select class="browser-default custom-select" id="town" name="town" th:field="*{town}">
+            <option th:each="town : ${T(app.deliveryLocation.model.Town).values()}" th:value="${town}" th:text="${town}"></option>
+
+        </select>
+        <small th:if="${#fields.hasErrors('town')}" th:errors="*{town}" class="bg-danger text-light rounded">Town error message</small>
+
+        </div>
+
+
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-info  mb-3">Edit Location</button>
+        </div>
+
+    </form>
+</main>
+<footer class="footer bg-transparent py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background footer-text fixed-bottom">
+            &copy; 2025 FriendlyLend. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

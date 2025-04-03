@@ -61,6 +61,9 @@
                                 <td>
                                     <a th:if="${user}" th:href="@{/items/rent-to-bag/{id}(id=${item.id})}" class="btn btn-light">Rent Now</a>
                                 </td>
+                                <td>
+                                    <a th:if="${user}" th:href="@{/favorites/add-to-favorite/{id}(id=${item.id})}" class="btn btn-light">Add in Favorites</a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

@@ -9,10 +9,11 @@ import app.item.repository.ItemRepository;
 import app.purchase.repository.PurchaseRepository;
 import app.user.model.User;
 
+import app.web.dto.CreateFavorite;
 import app.web.dto.CreateNewItem;
 import app.web.dto.ItemPurchaseRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -26,17 +27,12 @@ import java.util.stream.Collectors;
 public class ItemService {
 
     private final ItemRepository itemRepository;
-    private final PasswordEncoder passwordEncoder;
-
     private final PurchaseRepository purchaseRepository;
 
 
     @Autowired
-    public ItemService(ItemRepository itemRepository, PasswordEncoder passwordEncoder, PurchaseRepository purchaseRepository) {
-
+    public ItemService(ItemRepository itemRepository, PurchaseRepository purchaseRepository) {
         this.itemRepository = itemRepository;
-        this.passwordEncoder = passwordEncoder;
-
         this.purchaseRepository = purchaseRepository;
     }
 
@@ -73,34 +69,31 @@ public class ItemService {
 
 
     public List<Item> getAllByOwnerId(UUID ownerId) {
-
         return itemRepository.findByOwnerId(ownerId);
     }
 
+
     public List<Item> getItemsFromOthers(UUID userId) {
-        // Взимаме всички артикули
+
         List<Item> allItems = itemRepository.findAll();
 
-        // Вземаме списък с всички вече наети артикули
+
         List<UUID> rentedItemIds = purchaseRepository.findAll()
                 .stream()
-                .map(itemPurchase -> itemPurchase.getItem().getId()) // Вземаме ID на артикула
+                .map(itemPurchase -> itemPurchase.getItem().getId())
                 .collect(Collectors.toList());
 
-        // Филтрираме артикулите, като изключваме тези, които:
-        // - принадлежат на текущия потребител
-        // - вече са наети
+
         return allItems.stream()
-                .filter(item -> !item.getOwner().getId().equals(userId)) // Премахваме артикулите на текущия потребител
-                .filter(item -> !rentedItemIds.contains(item.getId())) // Премахваме вече наетите артикули
+                .filter(item -> !item.getOwner().getId().equals(userId))
+                .filter(item -> !rentedItemIds.contains(item.getId()))
                 .collect(Collectors.toList());
     }
 
+
     public Item getItemById(UUID id) {
-        // Използваме Optional, за да проверим дали артикулът съществува
         Optional<Item> itemOptional = itemRepository.findById(id);
 
-        // Връщаме артикула, ако съществува, или хвърляме изключение, ако не
         return itemOptional.orElseThrow(() -> new DomainException("Item with id [%s] does not exist.".formatted(id)));
     }
 
@@ -117,4 +110,11 @@ public class ItemService {
                 .build();
     }
 
+    public CreateFavorite convertToItemFavorite(Item item) {
+        return CreateFavorite.builder()
+                .name(item.getName())
+                .imageUrl(item.getImageUrl())
+                .itemId(item.getId())
+                .build();
+    }
 }

@@ -1,6 +1,7 @@
 package app.user.model;
 
 
+import app.favorite.model.Favorite;
 import app.item.model.Item;
 
 import app.purchase.model.ItemPurchase;
@@ -49,6 +50,9 @@ public class User {
 
         @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
         private List<ItemPurchase> purchases = new ArrayList<>();
+
+        @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+        private List<Favorite> favorites = new ArrayList<>();
 
 
 }

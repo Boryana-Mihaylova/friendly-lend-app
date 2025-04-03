@@ -1,6 +1,7 @@
 package app.item.model;
 
 
+import app.favorite.model.Favorite;
 import app.purchase.model.ItemPurchase;
 import app.user.model.User;
 import jakarta.persistence.*;
@@ -63,6 +64,9 @@ public class Item {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
     private List<ItemPurchase> purchases = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
+    private List<Favorite> favorites = new ArrayList<>();
 
 
 }

@@ -9,7 +9,7 @@ import app.purchase.repository.PurchaseRepository;
 import app.user.model.User;
 import app.web.dto.ItemPurchaseRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,17 +23,13 @@ public class PurchaseService {
 
     private final ItemService itemService;
 
-    private final PasswordEncoder passwordEncoder;
-
 
 
     @Autowired
-    public PurchaseService(PurchaseRepository purchaseRepository, ItemService itemService, PasswordEncoder passwordEncoder) {
+    public PurchaseService(PurchaseRepository purchaseRepository, ItemService itemService) {
         this.purchaseRepository = purchaseRepository;
         this.itemService = itemService;
 
-
-        this.passwordEncoder = passwordEncoder;
     }
 
 

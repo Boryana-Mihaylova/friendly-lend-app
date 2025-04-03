@@ -112,25 +112,4 @@ public class ItemController {
         return modelAndView;
     }
 
-    @GetMapping("/rent-to-bag/{id}")
-    public ModelAndView getNewPurchase(@PathVariable UUID id, @AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
-
-        User user = userService.getById(authenticationMetadata.getUserId());
-
-
-        Item item = itemService.getItemById(id);
-
-        ItemPurchaseRequest itemPurchaseRequest = itemService.convertToItemPurchase(item);
-
-        purchaseService.createPurchase(itemPurchaseRequest, user);
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("my-bag");
-        modelAndView.addObject("ItemPurchaseRequest", itemPurchaseRequest);
-        modelAndView.addObject("user", user);
-
-        return modelAndView;
-
-    }
-
 }

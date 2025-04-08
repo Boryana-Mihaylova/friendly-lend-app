@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegisterRequest {
 
+    @NotBlank(message = "Username cannot be empty")
     @Size(min = 3, message = "Username must be at least 3 symbols")
     private String username;
 
@@ -23,6 +24,7 @@ public class RegisterRequest {
     @Email(message = "Not a valid email format")
     private String email;
 
+    @NotBlank(message = "Password cannot be empty")
     @Size(min = 6, message = "Password must be at least 6 symbols")
     private String password;
 

@@ -2,6 +2,7 @@ package app.user.service;
 
 
 import app.exception.DomainException;
+import app.exception.UsernameAlreadyExistException;
 import app.security.AuthenticationMetadata;
 import app.user.model.User;
 import app.user.model.UserRole;
@@ -47,7 +48,7 @@ public class UserService implements UserDetailsService {
         Optional<User> optionalUser = userRepository.findByUsernameOrEmail(registerRequest.getUsername(), registerRequest.getEmail());
 
         if (optionalUser.isPresent()){
-            throw new RuntimeException("User with this email/username already exist.");
+            throw new UsernameAlreadyExistException("Username [%s] already exist.".formatted(registerRequest.getUsername()));
         }
 
         User user = User.builder()

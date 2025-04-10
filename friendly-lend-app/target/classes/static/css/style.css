@@ -390,3 +390,39 @@ a:hover {
     border-radius: .25rem;
     max-width: 100%;
 }
+
+
+
+.payment-result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.payment-box.not-found {
+    margin-bottom: 20px;
+}
+
+.details-section {
+    margin-bottom: 20px;
+}
+
+.profile-actions-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.profile-actions-button:hover {
+    background-color: #0056b3;
+}

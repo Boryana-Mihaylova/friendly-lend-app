@@ -15,7 +15,6 @@
         <div class="home">
             <a th:href="${user != null ? '/home' : '/'}">FriendlyLend</a>
             <a th:if="${user}" th:href="@{/items/new}">Add Item</a>
-            <a th:if="${user}" th:href="@{/surveys/newSurvey}">Support Survey</a>
             <a th:if="${user}" th:href="@{/locations/edit}">Edit Delivery Location</a>
             <a th:if="${user}" th:href="@{'/users/' + ${user.id} + '/profile'}">Edit Profile</a>
         </div>

@@ -45,14 +45,60 @@
             <div class="col-6 mt-1 mb-1">
                 <div class="home-fields" style="height: 30vh; overflow: auto">
                     <h3 class="my-stamps">Our Eco Surveys</h3>
-                    <p>Explore our surveys and show your support for one of them using the 'Support Survey' button.</p>
-                    <div class="button-container">
+                    <p>Explore our eco surveys and learn more about the causes. You can show your support by clicking one of the green buttons below.
+                        To see which topic you've already supported, click the "My Survey Support" button.</p>
+                    <div class="button-container mb-3">
                         <a th:href="@{/surveys/user-survey}" class="btn btn-light">My Survey Support</a>
                     </div>
 
-                    <p>SUSTAINABILITY – Sustainable clothing consumption reduces overproduction and preserves valuable natural resources.</p>
-                    <p>ENVIRONMENT – By renting clothes instead of buying new ones, we reduce plastic pollution from synthetic materials and waste.</p>
-                    <p>RECYCLING – Giving clothes a second life through reuse extends their lifespan and reduces textile waste.</p>
+
+                    <p>
+                        <strong>SUSTAINABILITY</strong> – Sustainable clothing consumption reduces overproduction and preserves valuable natural resources.
+                        <a href="#" onclick="document.getElementById('sustainability-more').style.display='block'; this.style.display='none'; return false;">Read more</a>
+                    </p>
+                    <p id="sustainability-more" style="display: none;">
+                        Choosing sustainable fashion means prioritizing quality over quantity, reducing the pressure on textile production.
+                        It promotes brands that use eco-friendly materials and ethical labor.
+                        Supporting this movement helps build a more responsible and circular fashion industry.
+                    </p>
+                    <form th:action="@{/surveys}" method="post">
+                        <input type="hidden" name="userId" th:value="${user.id}" />
+                        <input type="hidden" name="support" value="SUPPORT" />
+                        <button type="submit" name="subject" value="SUSTAINABILITY" class="btn btn-light mt-2">Support Sustainability</button>
+                    </form>
+                    <hr/>
+
+                    <p>
+                        <strong>ENVIRONMENT</strong> – By renting clothes instead of buying new ones, we reduce plastic pollution from synthetic materials and waste.
+                        <a href="#" onclick="document.getElementById('environment-more').style.display='block'; this.style.display='none'; return false;">Read more</a>
+                    </p>
+                    <p id="environment-more" style="display: none;">
+                        Synthetic fabrics like polyester shed microplastics into the water system when washed.
+                        Renting clothes instead of constantly purchasing reduces the number of garments produced, which directly lowers pollution.
+                        This helps combat the fashion industry’s massive environmental footprint.
+                    </p>
+                    <form th:action="@{/surveys}" method="post">
+                        <input type="hidden" name="userId" th:value="${user.id}" />
+                        <input type="hidden" name="support" value="SUPPORT" />
+                        <button type="submit" name="subject" value="ENVIRONMENT" class="btn btn-light mt-2">Support Environment</button>
+                    </form>
+                    <hr/>
+
+                    <p>
+                        <strong>RECYCLING</strong> – Giving clothes a second life through reuse extends their lifespan and reduces textile waste.
+                        <a href="#" onclick="document.getElementById('recycling-more').style.display='block'; this.style.display='none'; return false;">Read more</a>
+                    </p>
+                    <p id="recycling-more" style="display: none;">
+                        Textile recycling keeps clothing out of landfills and reduces demand for new raw materials.
+                        Reusing items helps save water, energy, and chemicals needed in production.
+                        Supporting recycling contributes to a more sustainable and responsible fashion cycle.
+                    </p>
+                    <form th:action="@{/surveys}" method="post">
+                        <input type="hidden" name="userId" th:value="${user.id}" />
+                        <input type="hidden" name="support" value="SUPPORT" />
+                        <button type="submit" name="subject" value="RECYCLING" class="btn btn-light mt-2">Support Recycling</button>
+                    </form>
+                    <hr/>
                 </div>
             </div>
         </div>

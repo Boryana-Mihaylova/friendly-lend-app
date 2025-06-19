@@ -11,7 +11,9 @@ import app.web.dto.RegisterRequest;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,11 +40,25 @@ public class IndexController {
     @GetMapping("/")
     public String getIndexPage() {
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()
+                && !authentication.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/home";
+        }
+
         return "index";
     }
 
     @GetMapping("/login")
     public ModelAndView getLoginPage(@RequestParam(value = "error", required = false) String errorParam) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()
+                && !authentication.getPrincipal().equals("anonymousUser")) {
+            return new ModelAndView("redirect:/home");
+        }
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
@@ -60,6 +76,13 @@ public class IndexController {
 
     @GetMapping("/register")
     public ModelAndView getRegisterPage() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()
+                && !authentication.getPrincipal().equals("anonymousUser")) {
+            return new ModelAndView("redirect:/home");
+        }
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("register");

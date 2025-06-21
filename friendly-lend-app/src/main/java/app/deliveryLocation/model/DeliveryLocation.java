@@ -29,9 +29,9 @@ public class DeliveryLocation {
     private Town town;
 
 
-    @ManyToOne(optional = false)
-    private User owner;
-
+    @OneToOne
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
 
 
 

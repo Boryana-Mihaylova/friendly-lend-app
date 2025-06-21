@@ -1,6 +1,7 @@
 package app.user.model;
 
 
+import app.deliveryLocation.model.DeliveryLocation;
 import app.favorite.model.Favorite;
 import app.item.model.Item;
 
@@ -53,6 +54,9 @@ public class User {
 
         @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
         private List<Favorite> favorites = new ArrayList<>();
+
+        @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+        private DeliveryLocation deliveryLocation;
 
 
 }

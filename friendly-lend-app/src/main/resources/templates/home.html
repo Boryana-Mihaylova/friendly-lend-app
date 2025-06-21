@@ -36,7 +36,7 @@
             <div class="col-6 mt-1 mb-1">
                 <div class="home-fields" style="height: 30vh; overflow: auto">
                     <h3 class="my-stamps">Profile</h3>
-                    <p>See your Profile or edit  with the 'Edit Profile' button.</p>
+                    <p>See your Profile or edit with the 'Edit Profile' button.</p>
                     <div class="button-container">
                         <a th:href="@{'/users/' + ${user.id} + '/my-profile'}" class="btn btn-light">Profile</a>
                     </div>
@@ -61,11 +61,13 @@
                         It promotes brands that use eco-friendly materials and ethical labor.
                         Supporting this movement helps build a more responsible and circular fashion industry.
                     </p>
-                    <form th:action="@{/surveys}" method="post">
-                        <input type="hidden" name="userId" th:value="${user.id}" />
-                        <input type="hidden" name="support" value="SUPPORT" />
-                        <button type="submit" name="subject" value="SUSTAINABILITY" class="btn btn-light mt-2">Support Sustainability</button>
-                    </form>
+                        <div class="button-container">
+                            <a th:if="${user}"
+                               th:href="@{/surveys/vote(subject=${'SUSTAINABILITY'}, support=${'SUPPORT'})}"
+                               class="btn btn-light mt-2">
+                                Support Sustainability
+                            </a>
+                        </div>
                     <hr/>
 
                     <p>
@@ -77,11 +79,13 @@
                         Renting clothes instead of constantly purchasing reduces the number of garments produced, which directly lowers pollution.
                         This helps combat the fashion industry’s massive environmental footprint.
                     </p>
-                    <form th:action="@{/surveys}" method="post">
-                        <input type="hidden" name="userId" th:value="${user.id}" />
-                        <input type="hidden" name="support" value="SUPPORT" />
-                        <button type="submit" name="subject" value="ENVIRONMENT" class="btn btn-light mt-2">Support Environment</button>
-                    </form>
+                    <div class="button-container">
+                        <a th:if="${user}"
+                           th:href="@{/surveys/vote(subject=${'ENVIRONMENT'}, support=${'SUPPORT'})}"
+                           class="btn btn-light mt-2">
+                            Support Environment
+                        </a>
+                    </div>
                     <hr/>
 
                     <p>
@@ -93,11 +97,13 @@
                         Reusing items helps save water, energy, and chemicals needed in production.
                         Supporting recycling contributes to a more sustainable and responsible fashion cycle.
                     </p>
-                    <form th:action="@{/surveys}" method="post">
-                        <input type="hidden" name="userId" th:value="${user.id}" />
-                        <input type="hidden" name="support" value="SUPPORT" />
-                        <button type="submit" name="subject" value="RECYCLING" class="btn btn-light mt-2">Support Recycling</button>
-                    </form>
+                    <div class="button-container">
+                        <a th:if="${user}"
+                           th:href="@{/surveys/vote(subject=${'RECYCLING'}, support=${'SUPPORT'})}"
+                           class="btn btn-light mt-2">
+                            Support Recycling
+                        </a>
+                    </div>
                     <hr/>
                 </div>
             </div>
@@ -105,25 +111,15 @@
 
         <div class="col-6 mt-1 mb-1">
             <div class="home-fields" style="height: 30vh; overflow: auto">
-                <h3 class="my-stamps">Delivery Location</h3>
-                <p>See your Delivery Location or edit  with the 'Edit Delivery Location' button.</p>
-                <!-- Каре с бутона вътре -->
+                <h3 class="my-stamps">Preferred Delivery Spot</h3>
+                <p>Use the <strong>"Edit Delivery Spot"</strong> button above to choose a public place in your town for item exchanges.
+                    You can update your selection at any time.
+                    No couriers needed — just simple, trusted handoffs between friends.</p>
                 <div class="button-container">
-                    <a th:href="@{/locations/my-location}" class="btn btn-light">My Delivery Location</a>
+                    <a th:href="@{/locations/my-location}" class="btn btn-light">My Delivery Spot</a>
                 </div>
             </div>
         </div>
-
-<!--        <div class="col-6 mt-1 mb-1">-->
-<!--            <div class="home-fields" style="height: 30vh; overflow: auto">-->
-<!--                <h3 class="my-stamps">Users</h3>-->
-<!--                <p>See Users Menu or edit  with the 'Edit Users Role' button.</p>-->
-<!--                <div class="button-container">-->
-<!--                    <a th:href="@{'/users/' + ${user.id} + '/my-users'}" class="btn btn-light">Users Menu</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
     </div>
     </div>
 </main>

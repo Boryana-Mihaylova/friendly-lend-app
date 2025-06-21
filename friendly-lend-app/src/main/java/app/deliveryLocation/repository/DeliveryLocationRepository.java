@@ -10,5 +10,7 @@ import java.util.UUID;
 @Repository
 public interface DeliveryLocationRepository extends JpaRepository<DeliveryLocation, UUID> {
 
-    List<DeliveryLocation> findByOwnerId(UUID ownerId);
+    DeliveryLocation findByUserId(UUID userId);
+
+    void deleteByUserId(UUID userId);
 }

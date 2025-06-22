@@ -19,4 +19,6 @@ public class UserEditRequest {
     @Email(message = "Requires correct email format")
     private String email;
 
+    private String username;
+
 }

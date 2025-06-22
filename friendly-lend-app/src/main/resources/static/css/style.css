@@ -426,3 +426,15 @@ a:hover {
 .profile-actions-button:hover {
     background-color: #0056b3;
 }
+label {
+    color: white;
+    font-weight: 500;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.my-table td, .my-table th {
+    text-align: center;
+}

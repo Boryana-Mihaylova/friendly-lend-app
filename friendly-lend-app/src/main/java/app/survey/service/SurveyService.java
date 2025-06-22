@@ -27,27 +27,18 @@ public class SurveyService {
 
 
     public SurveyResponse submitSurvey(SurveyRequest surveyRequest) {
-
-
-        SurveyResponse surveyResponse = new SurveyResponse();
-        surveyResponse.setSubject(surveyResponse.getSubject());
-        surveyResponse.setSupport(surveyResponse.getSupport());
-        surveyResponse.setUserId(surveyRequest.getUserId());
-
-
-        ResponseEntity<SurveyResponse> httpResponse = surveyClient.submitSurvey(surveyRequest);
-
+        ResponseEntity<SurveyResponse> httpResponse = surveyClient.submitSurvey(
+                surveyRequest.getSubject(),
+                surveyRequest.getSupport(),
+                surveyRequest.getUserId()
+        );
         return httpResponse.getBody();
     }
-
 
     public SurveyResponse getSurvey(UUID userId) {
 
         ResponseEntity<SurveyResponse> httpResponse = surveyClient.getSurvey(userId);
         return httpResponse.getBody();
     }
-
-
-
 
 }

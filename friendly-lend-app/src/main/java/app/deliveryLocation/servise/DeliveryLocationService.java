@@ -25,20 +25,29 @@ public class DeliveryLocationService {
 
     public DeliveryLocation edit(LocationEditRequest locationEditRequest, User user) {
 
+        DeliveryLocation existing = pickupLocationRepository.findByUserId(user.getId());
+
+        if (existing != null) {
+            // редактирай съществуващата локация
+            existing.setLocation(locationEditRequest.getLocation());
+            existing.setTown(locationEditRequest.getTown());
+            return pickupLocationRepository.save(existing);
+        }
+
+
         DeliveryLocation pickupLocation = DeliveryLocation.builder()
 
                 .location(locationEditRequest.getLocation())
                 .town(locationEditRequest.getTown())
-                .owner(user)
+                .user(user)
                 .build();
 
-        // Записване на артикула в базата данни
         pickupLocation = pickupLocationRepository.save(pickupLocation);
 
         return pickupLocation;
     }
 
-    public List<DeliveryLocation> getAllByOwnerId(UUID ownerId) {
-        return pickupLocationRepository.findByOwnerId(ownerId);
+    public DeliveryLocation getByUserId(UUID userId) {
+        return pickupLocationRepository.findByUserId(userId);
     }
 }

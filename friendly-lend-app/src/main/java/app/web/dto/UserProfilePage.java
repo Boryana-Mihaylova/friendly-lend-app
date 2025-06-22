@@ -17,4 +17,7 @@ public class UserProfilePage {
 
     @Email(message = "Requires correct email format")
     private String email;
+
+    private String username;
+    private String role;
 }

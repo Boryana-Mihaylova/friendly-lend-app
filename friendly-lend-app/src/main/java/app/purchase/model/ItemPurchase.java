@@ -49,7 +49,7 @@ public class ItemPurchase {
     private User owner;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, columnDefinition = "CHAR(36)")
     private Item item;
 
 }

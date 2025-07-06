@@ -2,23 +2,22 @@ package app.web.mapper;
 
 import app.user.model.User;
 import app.web.dto.UserEditRequest;
-
 import app.web.dto.UserProfilePage;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class DtoMapper {
 
-    // Test:
+
     public static UserEditRequest mapUserToUserEditRequest(User user) {
 
         return UserEditRequest.builder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
+                .username(user.getUsername())
                 .build();
     }
-
 
 
     public static UserProfilePage mapUserToUserProfilePage(User user) {
@@ -27,8 +26,8 @@ public class DtoMapper {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
+                .username(user.getUsername())
+                .role(user.getRole().name())
                 .build();
     }
-
-
 }

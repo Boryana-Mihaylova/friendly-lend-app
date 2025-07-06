@@ -10,32 +10,19 @@
         <div class="row mt-1 mb-2">
             <div class="col-12 mt-1 mb-1">
                 <div class="my-closet">
-                    <h2>My Profile</h2>
 
-                    <!-- Списък с всички артикули на потребителя -->
-                    <div class="home-fields" style="height: 80vh; overflow: auto">
-                        <table class="my-table table-striped table-dark">
-                            <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="user : ${userProfilePage}">
-                                <td>
-                                    <span th:text="${user.firstName}"></span>
-                                </td>
-                                <td>
-                                    <span th:text="${user.lastName}"></span>
-                                </td>
-                                <td>
-                                    <span th:text="${user.email}"></span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="card shadow-sm p-4">
+                        <h2 class="mb-3">My Profile</h2>
+
+                        <p><strong>Username:</strong> <span th:text="${userProfilePage.username}"></span></p>
+                        <p><strong>First Name:</strong> <span th:text="${userProfilePage.firstName}"></span></p>
+                        <p><strong>Last Name:</strong> <span th:text="${userProfilePage.lastName}"></span></p>
+                        <p><strong>Email:</strong> <span th:text="${userProfilePage.email}"></span></p>
+                        <p><strong>Role:</strong> <span th:text="${userProfilePage.role}"></span></p>
+
+                        <div class="mt-4">
+                            <a th:href="@{'/users/' + ${user.id} + '/profile'}" class="btn btn-light">Edit Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,5 @@
 package app.survey.client;
 
-
-import app.survey.client.dto.SurveyRequest;
 import app.survey.client.dto.SurveyResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -19,12 +18,23 @@ public interface SurveyClient {
 
 
     @PostMapping
-    ResponseEntity<SurveyResponse> submitSurvey(@RequestBody SurveyRequest SurveyRequest);
+    ResponseEntity<SurveyResponse> submitSurvey(
+            @RequestParam("subject") String subject,
+            @RequestParam("support") String support,
+            @RequestParam("userId") UUID userId
+    );
 
 
     @GetMapping("/user-survey")
     ResponseEntity<SurveyResponse> getSurvey(@RequestParam(name = "userId") UUID userId);
+
+
+    @GetMapping("/stats")
+    ResponseEntity<Map<String, Long>> getSurveyStats();
 }
+
+
+
 
 
 

@@ -8,14 +8,14 @@ import app.survey.service.SurveyService;
 import app.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
@@ -32,21 +32,6 @@ public class SurveyController {
         this.surveyService = surveyService;
     }
 
-
-
-//    @GetMapping("/newSurvey")
-//    public ModelAndView getNewSurveyPage(@AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
-//
-//        UUID userId = authenticationMetadata.getUserId();
-//
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("user-support");
-//        modelAndView.addObject("userId", userId);
-//        modelAndView.addObject("surveyRequest", SurveyRequest.builder().build());
-//
-//        return modelAndView;
-//    }
 
     @GetMapping("/vote")
     public ModelAndView voteSupport(
@@ -89,6 +74,13 @@ public class SurveyController {
         modelAndView.addObject("surveyResponse", surveyResponse);
 
         return modelAndView;
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/stats")
+    @ResponseBody
+    public ResponseEntity<Map<String, Long>> getStats() {
+        return ResponseEntity.ok(surveyService.getSurveyStats());
     }
 }
 

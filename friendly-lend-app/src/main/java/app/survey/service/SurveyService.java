@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -39,6 +40,10 @@ public class SurveyService {
 
         ResponseEntity<SurveyResponse> httpResponse = surveyClient.getSurvey(userId);
         return httpResponse.getBody();
+    }
+
+    public Map<String, Long> getSurveyStats() {
+        return surveyClient.getSurveyStats().getBody();
     }
 
 }

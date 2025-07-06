@@ -2,7 +2,7 @@
 /target/
 
 # IntelliJ
-/.idea/
+/friendly-lend-app/.idea/
 /*.iml
 
 # OS files

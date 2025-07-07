@@ -4,27 +4,28 @@
 <head th:replace="~{fragments/commons::head}"></head>
 <body>
 <header th:replace="~{fragments/commons::nav}"></header>
+
 <main>
     <div class="welcome mt-1 mb-4">
         <div class="row mt-1 mb-2">
             <div class="col-12 mt-1 mb-1">
                 <div class="my-closet">
-                    <h2>My Survey Response</h2>
+                    <h2>Thank you for your support!</h2>
+                    <p class="h5 mb-3">Your vote has been recorded successfully.</p>
 
-
-                    <div class="home-fields" style="height: 80vh; overflow: auto">
+                    <div class="home-fields" style="height: auto; padding: 10px">
                         <table class="my-table table-striped table-dark">
                             <tbody>
-                            <tr th:each="survey : ${surveyResponse}">
-                                <td>
-                                    <span th:text="${survey.subject}"></span>
-                                </td>
-                                <td>
-                                    <span th:text="${survey.support}"></span>
-                                </td>
+                            <tr>
+                                <td><strong>Subject:</strong></td>
+                                <td><span th:text="${subject}"></span></td>
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a th:href="@{/home}" class="btn btn-info">Back to Home</a>
                     </div>
                 </div>
             </div>

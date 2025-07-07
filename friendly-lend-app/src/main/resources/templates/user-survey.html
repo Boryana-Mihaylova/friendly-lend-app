@@ -6,32 +6,21 @@
 <header th:replace="~{fragments/commons::nav}"></header>
 <main>
     <div class="welcome mt-1 mb-4">
-        <p class="mySticky bg-gray text-dark user" th:text="${'Welcome ' + user.username}"></p>
         <div class="row mt-1 mb-2">
             <div class="col-12 mt-1 mb-1">
                 <div class="my-closet">
-                    <h2>My Closet</h2>
+                    <h2>My Survey Response</h2>
 
-                    <!-- Списък с всички артикули на потребителя -->
+
                     <div class="home-fields" style="height: 80vh; overflow: auto">
                         <table class="my-table table-striped table-dark">
-                            <thead>
-                            <tr>
-                                <th>Subjcet</th>
-                                <th>Support</th>
-                            </tr>
-                            </thead>
                             <tbody>
-                            <!-- Чрез this we loop през всички артикули на потребителя -->
                             <tr th:each="survey : ${surveyResponse}">
                                 <td>
                                     <span th:text="${survey.subject}"></span>
                                 </td>
                                 <td>
                                     <span th:text="${survey.support}"></span>
-                                </td>
-                                <td>
-                                    <span th:text="${survey.userId}"></span>
                                 </td>
                             </tr>
                             </tbody>

@@ -117,4 +117,15 @@ public class ItemService {
                 .itemId(item.getId())
                 .build();
     }
+
+    public List<Item> getAvailableItemsByOwner(UUID ownerId) {
+        return itemRepository.findAllByOwnerIdAndBorrowerIsNull(ownerId);
+    }
+
+    public void markAsBorrowed(UUID itemId, User borrower) {
+        Item item = getById(itemId);
+
+        item.setBorrower(borrower);
+        itemRepository.save(item);
+    }
 }

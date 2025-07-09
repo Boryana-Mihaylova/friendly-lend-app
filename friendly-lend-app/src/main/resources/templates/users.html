@@ -13,7 +13,7 @@
             <th>Email</th>
             <th>Role</th>
             <th>Active</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -23,9 +23,19 @@
             <td th:text="${u.role}"></td>
             <td th:text="${u.active} ? 'Yes' : 'No'"></td>
             <td>
-                <form th:action="@{'/users/' + ${u.id} + '/role'}" method="post">
+                <!-- Switch Role -->
+                <form th:action="@{'/users/' + ${u.id} + '/role'}" method="post" class="mb-1">
                     <input type="hidden" name="_method" value="put"/>
                     <button type="submit" class="btn btn-sm btn-warning">Switch Role</button>
+                </form>
+
+                <!-- Toggle Status -->
+                <form th:action="@{'/users/' + ${u.id} + '/status'}" method="post">
+                    <input type="hidden" name="_method" value="put"/>
+                    <button type="submit"
+                            th:text="${u.active} ? 'Deactivate' : 'Activate'"
+                            class="btn btn-sm btn-warning">
+                    </button>
                 </form>
             </td>
         </tr>

@@ -76,26 +76,33 @@ public class UserController {
         return modelAndView;
     }
 
-//    @GetMapping
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public ModelAndView getAllUsers(@AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
-//
-//        List<User> users = userService.getAllUsers();
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("users");
-//        modelAndView.addObject("users", users);
-//
-//        return modelAndView;
-//    }
-//
-//
-//    @PutMapping("/{id}/role")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public String switchUserRole(@PathVariable UUID id) {
-//
-//        userService.switchRole(id);
-//
-//        return "redirect:/users";
-//    }
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public ModelAndView getAllUsers(@AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
+
+        List<User> users = userService.getAllUsers();
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("users");
+        modelAndView.addObject("users", users);
+
+        return modelAndView;
+    }
+
+
+    @PutMapping("/{id}/role")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String switchUserRole(@PathVariable UUID id) {
+
+        userService.switchRole(id);
+
+        return "redirect:/users";
+    }
+
+    @PutMapping("/{id}/status")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String switchUserStatus(@PathVariable UUID id) {
+        userService.switchStatus(id);
+        return "redirect:/users";
+    }
 }

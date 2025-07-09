@@ -38,8 +38,13 @@ public class SurveyService {
 
     public SurveyResponse getSurvey(UUID userId) {
 
-        ResponseEntity<SurveyResponse> httpResponse = surveyClient.getSurvey(userId);
-        return httpResponse.getBody();
+        try {
+            ResponseEntity<SurveyResponse> httpResponse = surveyClient.getSurvey(userId);
+            return httpResponse.getBody();
+        } catch (Exception e) {
+            log.warn("Could not fetch survey for user {}: {}", userId, e.getMessage());
+            return null;
+        }
     }
 
     public Map<String, Long> getSurveyStats() {

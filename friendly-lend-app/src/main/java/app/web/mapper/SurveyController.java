@@ -59,19 +59,19 @@ public class SurveyController {
     }
 
 
-
-
     @GetMapping("/user-survey")
     public ModelAndView getSurvey(@AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
-
         UUID userId = authenticationMetadata.getUserId();
+        SurveyResponse surveyResponse = surveyService.getSurvey(userId);
 
-        SurveyResponse surveyResponse = surveyService.getSurvey(authenticationMetadata.getUserId());
+        ModelAndView modelAndView = new ModelAndView("user-survey");
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-survey");
-        modelAndView.addObject("userId", userId);
-        modelAndView.addObject("surveyResponse", surveyResponse);
+        if (surveyResponse != null && surveyResponse.getSubject() != null) {
+            modelAndView.addObject("surveyResponse", surveyResponse);
+            modelAndView.addObject("noSupportYet", false);
+        } else {
+            modelAndView.addObject("noSupportYet", true);
+        }
 
         return modelAndView;
     }

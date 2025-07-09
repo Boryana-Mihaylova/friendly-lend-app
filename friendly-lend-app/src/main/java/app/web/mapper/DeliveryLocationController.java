@@ -49,19 +49,22 @@ public class DeliveryLocationController {
     }
 
     @PostMapping
-    public String editPickupLocation(
+    public ModelAndView editPickupLocation(
             @Valid @ModelAttribute("locationEditRequest") LocationEditRequest locationEditRequest,
             BindingResult bindingResult,
             @AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
 
+        User user = userService.getById(authenticationMetadata.getUserId());
+
         if (bindingResult.hasErrors()) {
-            return "edit-location";
+            ModelAndView modelAndView = new ModelAndView("edit-location");
+            modelAndView.addObject("user", user);
+            return modelAndView;
         }
 
-        User user = userService.getById(authenticationMetadata.getUserId());
         pickupLocationService.edit(locationEditRequest, user);
 
-        return "redirect:/locations/my-location";
+        return new ModelAndView("redirect:/locations/my-location");
     }
 
     @GetMapping("/my-location")

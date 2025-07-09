@@ -17,6 +17,7 @@
             <a th:if="${user}" th:href="@{/items/new}">Add Item</a>
             <a th:if="${user}" th:href="@{/locations/edit}">Edit Delivery Spot</a>
             <a th:if="${user}" th:href="@{'/users/' + ${user.id} + '/profile'}">My Profile</a>
+            <a th:if="${user}" th:href="@{/favorites}">My Favorites</a>
         </div>
         <div class="links">
             <li th:unless="${user}">

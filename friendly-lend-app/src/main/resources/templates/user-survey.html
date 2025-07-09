@@ -9,22 +9,36 @@
         <div class="row mt-1 mb-2">
             <div class="col-12 mt-1 mb-1">
                 <div class="my-closet">
-                    <h2>My Survey Response</h2>
+                    <h2 class="text-center mb-4">My Survey Support</h2>
 
+                    <div class="home-fields" style="height: 60vh; overflow: auto">
 
-                    <div class="home-fields" style="height: 80vh; overflow: auto">
-                        <table class="my-table table-striped table-dark">
-                            <tbody>
-                            <tr th:each="survey : ${surveyResponse}">
-                                <td>
-                                    <span th:text="${survey.subject}"></span>
-                                </td>
-                                <td>
-                                    <span th:text="${survey.support}"></span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <!-- Ако няма подаден surveyResponse -->
+                        <div th:if="${noSupportYet}">
+                            <p class="text-center fs-5">You haven’t supported any topic yet.</p>
+                            <p class="text-center">
+                                Go back to the <a th:href="@{/home}">home page</a> and support the causes that inspire you!
+                            </p>
+                        </div>
+
+                        <!-- Ако има подаден surveyResponse -->
+                        <div th:if="${!noSupportYet}">
+                            <table class="my-table table-striped table-dark table-bordered text-center">
+                                <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Support</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><span th:text="${surveyResponse.subject}"></span></td>
+                                    <td><span th:text="${surveyResponse.support}"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>

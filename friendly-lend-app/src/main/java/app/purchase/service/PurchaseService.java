@@ -48,6 +48,8 @@ public class PurchaseService {
             throw new DomainException("Item with id [%s] does not exist.".formatted(itemPurchaseRequest.getItemId()));
         }
 
+        itemService.markAsBorrowed(item.getId(), user);
+
         // Създаване на нова поръчка
         ItemPurchase itemPurchase = ItemPurchase.builder()
                 .name(itemPurchaseRequest.getName())

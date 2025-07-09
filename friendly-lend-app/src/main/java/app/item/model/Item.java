@@ -62,6 +62,10 @@ public class Item {
     @ManyToOne(optional = false)
     private User owner;
 
+    @ManyToOne
+    @JoinColumn(name = "borrower_id")
+    private User borrower;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
     private List<ItemPurchase> purchases = new ArrayList<>();
 

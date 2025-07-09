@@ -86,10 +86,9 @@ public class ItemController {
 
         User user = userService.getById(authenticationMetadata.getUserId());
 
-        List<Item> items = itemService.getAllByOwnerId(authenticationMetadata.getUserId());
+        List<Item> items = itemService.getAvailableItemsByOwner(authenticationMetadata.getUserId());
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("my-closet");
+        ModelAndView modelAndView = new ModelAndView("my-closet");
         modelAndView.addObject("user", user);
         modelAndView.addObject("items", items);
 
@@ -110,6 +109,16 @@ public class ItemController {
         modelAndView.addObject("itemsFromOthers", itemsFromOthers);
 
         return modelAndView;
+    }
+
+    @PostMapping("/rent/{itemId}")
+    public String rentItem(@PathVariable UUID itemId, @AuthenticationPrincipal AuthenticationMetadata auth) {
+        User borrower = userService.getById(auth.getUserId());
+
+        // Обновява артикула и му закача borrower
+        itemService.markAsBorrowed(itemId, borrower);
+
+        return "redirect:/items/offers";
     }
 
 }

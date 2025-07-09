@@ -1,6 +1,7 @@
 package app.web.mapper;
 
 
+import app.favorite.model.Favorite;
 import app.favorite.service.FavoriteService;
 import app.item.model.Item;
 import app.item.service.ItemService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -59,5 +61,23 @@ public class FavoriteController {
 
         return modelAndView;
 
+    }
+
+    @GetMapping
+    public ModelAndView getFavorites(@AuthenticationPrincipal AuthenticationMetadata auth) {
+        User user = userService.getById(auth.getUserId());
+        List<Favorite> favorites = favoriteService.getFavoritesByUser(user);
+
+        ModelAndView modelAndView = new ModelAndView("favorites");
+        modelAndView.addObject("favorites", favorites);
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeFavorite(@PathVariable UUID id, @AuthenticationPrincipal AuthenticationMetadata auth) {
+        User user = userService.getById(auth.getUserId());
+        favoriteService.removeFavoriteById(id, user);
+        return "redirect:/favorites";
     }
 }

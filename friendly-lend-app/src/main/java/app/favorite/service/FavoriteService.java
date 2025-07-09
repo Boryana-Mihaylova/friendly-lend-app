@@ -47,6 +47,14 @@ public class FavoriteService {
         }
 
 
+        List<Favorite> existingFavorites = favoriteRepository.findByOwnerId(user.getId());
+        boolean alreadyExists = existingFavorites.stream()
+                .anyMatch(fav -> fav.getItem().getId().equals(item.getId()));
+
+        if (alreadyExists) {
+            return null;
+        }
+
         Favorite favorite = Favorite.builder()
                 .name(createFavorite.getName())
                 .imageUrl(createFavorite.getImageUrl())
@@ -57,5 +65,20 @@ public class FavoriteService {
         return favoriteRepository.save(favorite);
     }
 
+    public List<Favorite> getFavoritesByUser(User user) {
+        return favoriteRepository.findByOwnerId(user.getId());
+    }
+
+    public void removeFavoriteById(UUID id, User user) {
+        Favorite favorite = favoriteRepository.findById(id)
+                .orElseThrow(() -> new DomainException("Favorite with id [%s] does not exist.".formatted(id)));
+
+
+        if (!favorite.getOwner().getId().equals(user.getId())) {
+            throw new DomainException("You are not authorized to delete this favorite.");
+        }
+
+        favoriteRepository.delete(favorite);
+    }
 
 }

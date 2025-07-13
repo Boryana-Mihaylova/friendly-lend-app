@@ -28,11 +28,7 @@ public class SurveyService {
 
 
     public SurveyResponse submitSurvey(SurveyRequest surveyRequest) {
-        ResponseEntity<SurveyResponse> httpResponse = surveyClient.submitSurvey(
-                surveyRequest.getSubject(),
-                surveyRequest.getSupport(),
-                surveyRequest.getUserId()
-        );
+        ResponseEntity<SurveyResponse> httpResponse = surveyClient.submitSurvey(surveyRequest);
         return httpResponse.getBody();
     }
 

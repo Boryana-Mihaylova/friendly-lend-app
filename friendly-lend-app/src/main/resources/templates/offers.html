@@ -28,11 +28,29 @@
                                 <th>Owner</th>
                             </tr>
                             </thead>
+                            <div id="lightbox" class="lightbox-overlay" onclick="hideLightbox()">
+                                <img id="lightbox-img" src="" alt="Zoomed image">
+                            </div>
+
+                            <script>
+                                function showLightbox(imgSrc) {
+                                    document.getElementById("lightbox-img").src = imgSrc;
+                                    document.getElementById("lightbox").style.display = "flex";
+                                }
+
+                                function hideLightbox() {
+                                    document.getElementById("lightbox").style.display = "none";
+                                }
+                            </script>
                             <tbody>
                             <!-- Чрез this we loop през всички артикули, които не са на текущия потребител -->
                             <tr th:each="item : ${itemsFromOthers}">
                                 <td>
-                                    <img th:src="${item.imageUrl}" alt="Item Image" width="70px" height="70px">
+                                    <img th:src="${item.imageUrl}"
+                                         alt="Item Image"
+                                         width="70px" height="70px"
+                                         style="cursor: pointer"
+                                         th:attr="onclick=|showLightbox('${item.imageUrl}')|">
                                 </td>
                                 <td>
                                     <span th:text="${item.name}"></span>

@@ -4,6 +4,7 @@ package app.web.mapper;
 import app.item.model.Item;
 import app.item.service.ItemService;
 import app.security.AuthenticationMetadata;
+import app.survey.service.SurveyService;
 import app.user.model.User;
 import app.user.service.UserService;
 import app.web.dto.LoginRequest;
@@ -30,11 +31,13 @@ public class IndexController {
 
     private final UserService userService;
     private final ItemService itemService;
+    private final SurveyService surveyService;
 
     @Autowired
-    public IndexController(UserService userService, ItemService itemService) {
+    public IndexController(UserService userService, ItemService itemService, SurveyService surveyService) {
         this.userService = userService;
         this.itemService = itemService;
+        this.surveyService = surveyService;
     }
 
     @GetMapping("/")
@@ -115,6 +118,11 @@ public class IndexController {
         modelAndView.addObject("user", user);
 
         modelAndView.addObject("allItems", allItems);
+
+        if (user.getRole().name().equals("ADMIN")) {
+            var surveyStats = surveyService.getSurveyStats();
+            modelAndView.addObject("surveyStats", surveyStats);
+        }
 
         return modelAndView;
     }

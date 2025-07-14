@@ -1,5 +1,5 @@
 package app.item.model;
 
 public enum ItemStatus {
-    AVAILABLE, RENTED;
+    AVAILABLE, RENTED, ARCHIVED;
 }

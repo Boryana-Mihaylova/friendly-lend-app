@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import java.util.Date;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.PrePersist;
+
 @Builder
 @Getter
 @Setter
@@ -56,6 +61,14 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private Period period;
 
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ItemStatus status;
+
 
 
 
@@ -71,6 +84,14 @@ public class Item {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
     private List<Favorite> favorites = new ArrayList<>();
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = new Date();
+        if (this.status == null) {
+            this.status = ItemStatus.AVAILABLE;
+        }
+    }
 
 
 }

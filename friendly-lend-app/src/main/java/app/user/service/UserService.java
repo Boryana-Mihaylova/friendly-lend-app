@@ -3,11 +3,12 @@ package app.user.service;
 
 import app.exception.DomainException;
 import app.exception.UsernameAlreadyExistException;
+import app.notification.model.Notification;
+import app.notification.repository.NotificationRepository;
 import app.security.AuthenticationMetadata;
 import app.user.model.User;
 import app.user.model.UserRole;
 import app.user.repository.UserRepository;
-import app.web.dto.LoginRequest;
 import app.web.dto.RegisterRequest;
 import app.web.dto.UserEditRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -33,11 +32,13 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final NotificationRepository notificationRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, NotificationRepository notificationRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.notificationRepository = notificationRepository;
     }
 
 
@@ -60,6 +61,16 @@ public class UserService implements UserDetailsService {
                 .build();
 
         userRepository.save(user);
+
+        Notification notification = Notification.builder()
+                .user(user)
+                .message("Items inactive for over 60 days may be archived to improve visibility on the platform. " +
+                        "You will be notified in your profile if this applies.")
+                .createdAt(new Date())
+                .read(false)
+                .build();
+
+        notificationRepository.save(notification);
 
     }
 
@@ -124,5 +135,22 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new DomainException("User with this username does not exist."));
 
         return new AuthenticationMetadata(user.getId(), username, user.getPassword(), user.getRole(), user.isActive());
+    }
+
+    public int getUnreadNotificationCount(UUID userId) {
+        User user = getById(userId);
+        return notificationRepository.findAllByUserAndReadFalse(user).size();
+    }
+
+    public List<Notification> getUnreadNotifications(UUID userId) {
+        User user = getById(userId);
+        return notificationRepository.findAllByUserAndReadFalse(user);
+    }
+
+    public void markAllNotificationsAsRead(UUID userId) {
+        User user = getById(userId);
+        var unread = notificationRepository.findAllByUserAndReadFalse(user);
+        unread.forEach(n -> n.setRead(true));
+        notificationRepository.saveAll(unread);
     }
 }

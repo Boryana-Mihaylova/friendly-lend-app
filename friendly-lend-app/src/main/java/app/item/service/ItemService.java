@@ -5,6 +5,7 @@ import app.exception.DomainException;
 
 
 import app.item.model.Item;
+import app.item.model.ItemStatus;
 import app.item.repository.ItemRepository;
 import app.purchase.repository.PurchaseRepository;
 import app.user.model.User;
@@ -14,9 +15,13 @@ import app.web.dto.CreateNewItem;
 import app.web.dto.ItemPurchaseRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -128,4 +133,6 @@ public class ItemService {
         item.setBorrower(borrower);
         itemRepository.save(item);
     }
+
+
 }

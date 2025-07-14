@@ -40,6 +40,11 @@
                     <div class="button-container">
                         <a th:href="@{'/users/' + ${user.id} + '/my-profile'}" class="btn btn-light">Profile</a>
                     </div>
+                    <div th:if="${unreadNotifications != null and unreadNotifications.size() > 0}" class="mt-2">
+                        <p class="text-danger font-weight-bold">
+                            🔔 You have <span th:text="${unreadNotifications.size()}"></span> new notification(s)!
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="col-6 mt-1 mb-1">

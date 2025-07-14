@@ -23,6 +23,24 @@
                         <div class="mt-4">
                             <a th:href="@{'/users/' + ${user.id} + '/profile'}" class="btn btn-light">Edit Profile</a>
                         </div>
+                        <div class="mt-4">
+                            <h4>Notifications</h4>
+
+                            <div th:if="${notifications != null and notifications.size() > 0}">
+                                <ul>
+                                    <li th:each="n : ${notifications}">
+                                        <p class="text-dark fw-bold bg-light p-2 rounded border">
+                                            <span th:text="${#dates.format(n.createdAt, 'dd MMM yyyy HH:mm')}">[date]</span> –
+                                            <span th:text="${n.message}">[message]</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div th:if="${notifications == null or notifications.size() == 0}">
+                                <p class="text-muted">You have no unread notifications.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

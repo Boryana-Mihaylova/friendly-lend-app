@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -118,6 +119,9 @@ public class IndexController {
         modelAndView.addObject("user", user);
 
         modelAndView.addObject("allItems", allItems);
+
+        var unreadNotifications = userService.getUnreadNotifications(user.getId());
+        modelAndView.addObject("unreadNotifications", unreadNotifications);
 
         if (user.getRole().name().equals("ADMIN")) {
             var surveyStats = surveyService.getSurveyStats();

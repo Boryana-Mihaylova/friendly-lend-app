@@ -1,5 +1,6 @@
 package app.web.mapper;
 
+import app.notification.model.Notification;
 import app.security.AuthenticationMetadata;
 import app.user.model.User;
 import app.user.service.UserService;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -68,10 +70,15 @@ public class UserController {
 
         User user = userService.getById(id);
 
+        List<Notification> notifications = userService.getUnreadNotifications(id);
+
+        userService.markAllNotificationsAsRead(id);
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("my-profile");
         modelAndView.addObject("user", user);
         modelAndView.addObject("userProfilePage", DtoMapper.mapUserToUserProfilePage(user));
+        modelAndView.addObject("notifications", notifications);
 
         return modelAndView;
     }

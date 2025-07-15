@@ -9,6 +9,7 @@ import app.item.model.Item;
 import app.item.service.ItemService;
 import app.user.model.User;
 import app.web.dto.CreateFavorite;
+import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -147,5 +148,35 @@ public class FavoriteServiceTest {
         assertThrows(DomainException.class, () -> favoriteService.removeFavoriteById(favoriteId, otherUser));
 
         verify(favoriteRepository, never()).delete(any());
+    }
+
+    @Test
+    void givenDuplicateFavorite_whenCreateFavoriteItem_thenReturnNull() {
+        UUID itemId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+        User user = new User();
+        user.setId(userId);
+
+        Item item = new Item();
+        item.setId(itemId);
+
+        Favorite existingFavorite = Favorite.builder()
+                .item(item)
+                .owner(user)
+                .build();
+
+        CreateFavorite createFavorite = CreateFavorite.builder()
+                .itemId(itemId)
+                .name("Test Favorite")
+                .imageUrl("http://test.com/image.jpg")
+                .build();
+
+        when(itemService.getItemById(itemId)).thenReturn(item);
+        when(favoriteRepository.findByOwnerId(userId)).thenReturn(List.of(existingFavorite));
+
+        Favorite result = favoriteService.createFavoriteItem(createFavorite, user);
+
+        AssertionsForClassTypes.assertThat(result).isNull();
+        verify(favoriteRepository, never()).save(any());
     }
 }

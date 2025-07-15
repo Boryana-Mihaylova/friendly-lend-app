@@ -1,17 +1,20 @@
 # Maven
 **/target/
 
-# IntelliJ
-/friendly-lend-app/.idea/
-/*.iml
+# IntelliJ IDEA
+.friendly-lend-app/.idea/
+*.iml
 
-# OS files
+# OS-specific files
 .DS_Store
 Thumbs.db
 
-# Logs
+# Log files
 *.log
 
-# Environment
+# Local environment variables
 .env
-application-secrets.properties
+.env.*
+
+# Secrets (DO NOT COMMIT)
+friendly-lend-app/src/main/resources/application-secrets.properties

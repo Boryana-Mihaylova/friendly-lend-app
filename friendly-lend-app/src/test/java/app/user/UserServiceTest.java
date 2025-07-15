@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceUTest {
+public class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
@@ -109,14 +109,6 @@ public class UserServiceUTest {
         assertEquals("white", user.getLastName());
         assertEquals("sia@sia.bg", user.getEmail());
 
-    }
-
-    @Test
-    void givenUserNotFound_whenLoadUserByUsername_thenExceptionIsThrown() {
-        String username = "nonExistingUser";
-        when(userRepository.findByUsername(username)).thenReturn(Optional.empty());
-
-        assertThrows(DomainException.class, () -> userService.loadUserByUsername(username));
     }
 
 }

@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class FavoriteServiceUTest {
+public class FavoriteServiceTest {
 
     @Mock
     private FavoriteRepository favoriteRepository;
@@ -82,10 +83,69 @@ public class FavoriteServiceUTest {
                 .itemId(itemId)
                 .build();
 
-        when(itemService.getItemById(itemId)).thenReturn(null);
+        when(itemService.getItemById(itemId)).thenThrow(new DomainException("Item not found"));
 
         assertThrows(DomainException.class, () -> favoriteService.createFavoriteItem(createFavorite, user));
 
         verify(favoriteRepository, never()).save(any(Favorite.class));
+    }
+
+    @Test
+    void givenUserWithFavorites_whenGetFavoritesByUser_thenReturnList() {
+        User user = new User();
+        UUID userId = UUID.randomUUID();
+        user.setId(userId);
+
+        Favorite favorite1 = new Favorite();
+        Favorite favorite2 = new Favorite();
+
+        when(favoriteRepository.findByOwnerId(userId)).thenReturn(List.of(favorite1, favorite2));
+
+        List<Favorite> result = favoriteService.getFavoritesByUser(user);
+
+        assertThat(result).hasSize(2);
+        verify(favoriteRepository).findByOwnerId(userId);
+    }
+
+    @Test
+    void givenValidFavoriteOwnedByUser_whenRemoveFavorite_thenFavoriteIsDeleted() {
+        UUID favoriteId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+
+        User user = new User();
+        user.setId(userId);
+
+        Favorite favorite = new Favorite();
+        favorite.setId(favoriteId);
+        favorite.setOwner(user);
+
+        when(favoriteRepository.findById(favoriteId)).thenReturn(Optional.of(favorite));
+
+        favoriteService.removeFavoriteById(favoriteId, user);
+
+        verify(favoriteRepository).delete(favorite);
+    }
+
+    @Test
+    void givenFavoriteNotOwnedByUser_whenRemoveFavorite_thenThrowException() {
+        UUID favoriteId = UUID.randomUUID();
+        UUID actualOwnerId = UUID.randomUUID();
+        UUID otherUserId = UUID.randomUUID();
+
+        User otherUser = new User();
+        otherUser.setId(otherUserId);
+
+        User actualOwner = new User();
+        actualOwner.setId(actualOwnerId);
+
+        Favorite favorite = new Favorite();
+        favorite.setId(favoriteId);
+        favorite.setOwner(actualOwner);
+
+        when(favoriteRepository.findById(favoriteId)).thenReturn(Optional.of(favorite));
+
+        assertThrows(DomainException.class, () -> favoriteService.removeFavoriteById(favoriteId, otherUser));
+
+        verify(favoriteRepository, never()).delete(any());
     }
 }

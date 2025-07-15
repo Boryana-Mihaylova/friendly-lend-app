@@ -39,13 +39,7 @@ public class FavoriteService {
 
     public Favorite createFavoriteItem(CreateFavorite createFavorite, User user) {
 
-
         Item item = itemService.getItemById(createFavorite.getItemId());
-
-        if (item == null) {
-            throw new DomainException("Item with id [%s] does not exist.".formatted(createFavorite.getItemId()));
-        }
-
 
         List<Favorite> existingFavorites = favoriteRepository.findByOwnerId(user.getId());
         boolean alreadyExists = existingFavorites.stream()

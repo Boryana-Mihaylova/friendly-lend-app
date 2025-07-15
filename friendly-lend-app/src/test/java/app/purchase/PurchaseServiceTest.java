@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class PurchaseServiceUTest {
+public class PurchaseServiceTest {
 
     @Mock
     private PurchaseRepository purchaseRepository;
@@ -91,7 +91,7 @@ public class PurchaseServiceUTest {
                 .itemId(invalidItemId)
                 .build();
 
-        when(itemService.getItemById(invalidItemId)).thenReturn(null);
+        when(itemService.getItemById(invalidItemId)).thenThrow(new DomainException("Item not found"));
 
         // Act & Assert
         assertThrows(DomainException.class, () -> purchaseService.createPurchase(request, user));

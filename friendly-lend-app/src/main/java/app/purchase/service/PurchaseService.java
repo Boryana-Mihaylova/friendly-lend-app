@@ -41,16 +41,14 @@ public class PurchaseService {
 
     public ItemPurchase createPurchase(ItemPurchaseRequest itemPurchaseRequest, User user) {
 
-        // Извличаме артикула с ID-то от заявката
+
         Item item = itemService.getItemById(itemPurchaseRequest.getItemId());
 
-        if (item == null) {
-            throw new DomainException("Item with id [%s] does not exist.".formatted(itemPurchaseRequest.getItemId()));
-        }
+
 
         itemService.markAsBorrowed(item.getId(), user);
 
-        // Създаване на нова поръчка
+
         ItemPurchase itemPurchase = ItemPurchase.builder()
                 .name(itemPurchaseRequest.getName())
                 .description(itemPurchaseRequest.getDescription())
@@ -60,10 +58,10 @@ public class PurchaseService {
                 .price(itemPurchaseRequest.getPrice())
                 .period(itemPurchaseRequest.getPeriod())
                 .owner(user)
-                .item(item)  // Добавяме артикула към поръчката
+                .item(item)
                 .build();
 
-        // Записваме поръчката в базата
+
         return purchaseRepository.save(itemPurchase);
     }
 

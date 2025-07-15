@@ -2,6 +2,7 @@ package app.user;
 
 
 import app.exception.DomainException;
+import app.notification.repository.NotificationRepository;
 import app.user.model.User;
 import app.user.repository.UserRepository;
 import app.user.service.UserService;
@@ -30,6 +31,9 @@ public class UserServiceTest {
     private UserRepository userRepository;
     @Mock
     private PasswordEncoder passwordEncoder;
+
+    @Mock
+    private NotificationRepository notificationRepository;
 
 
     @InjectMocks

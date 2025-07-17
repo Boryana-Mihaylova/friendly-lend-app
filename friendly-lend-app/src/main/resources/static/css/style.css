@@ -472,3 +472,14 @@ label {
     box-shadow: 0 0 15px white;
     background-color: white;
 }
+
+.btn-light {
+    text-transform: none;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+.btn-light:hover {
+    background-color: #dee9f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

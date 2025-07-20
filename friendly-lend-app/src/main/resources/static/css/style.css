@@ -1,3 +1,5 @@
+
+
 .w-15 {
     width: 15%;
 }
@@ -143,7 +145,7 @@ textarea {
 
 .home-fields {
     border-radius: 6px;
-    background-color: rgba(39 41 42 / 40%);
+    background-color: rgba(131, 139, 143, 0.4);
     backdrop-filter: blur(15px);
     margin-bottom: 8px;
     border: #b3b8bd solid 1px;
@@ -483,3 +485,120 @@ label {
     background-color: #dee9f0;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+
+.image-floating {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.85;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.image-left {
+    left: -100px;
+    bottom: -40px;
+    width: 700px;
+    opacity: 0.85;
+}
+
+
+.image-right {
+    right: -40px;
+
+    bottom: -40px;
+
+    width: 500px;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+
+
+    mask-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0) 100%);
+
+    -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0) 100%);
+
+}
+
+.closet-bg {
+    background-image: url('/images/denim-jumpsuit.png');
+    background-size: cover;
+    background-position: center 15%;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.7);
+    //background-blend-mode: lighten;
+    border-radius: 12px;
+    color: #1a1a1a;
+    padding: 1.2em;
+}
+
+.my-stamps {
+
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1.6);
+}
+
+.floating-motto {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    position: absolute;
+    top: 180px;     /* колко надолу от горе – коригирай по вкус */
+    right: 80px;    /* колко вляво от десния ръб */
+    z-index: 2;
+    text-align: right;
+    font-size: 1.5rem;
+    color: white;
+    pointer-events: none;
+}
+
+.floating-motto .line1,
+.floating-motto .line2 {
+    opacity: 0;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+}
+
+/* 🕒 Първи ред – появява се след 1 секунда */
+.line1 {
+    animation: fadeInLine 7s ease-in-out 4s forwards;
+}
+
+/* 🕒 Втори ред – появява се след 3 секунди */
+.line2 {
+    animation: fadeInLine 7s ease-in-out 7s forwards;
+}
+
+@keyframes fadeInLine {
+    0%   { opacity: 0; transform: translateY(40px) scale(0.95); }
+    15%  { opacity: 1; transform: translateY(0) scale(1); }
+    85%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+}
+
+.eco-heading {
+    display: flex;
+    justify-content: center;   /* центрира хоризонтално */
+
+    align-items: center;
+    gap: 10px;
+}
+
+.eco-icon {
+    width: 35px;
+    height: auto;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.eco-icon:hover {
+    transform: rotate(-10deg) scale(1.05);
+}
+

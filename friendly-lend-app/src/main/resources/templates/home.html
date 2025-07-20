@@ -4,12 +4,18 @@
 <head th:replace="~{fragments/commons::head}"></head>
 <body>
 <header th:replace="~{fragments/commons::nav}"></header>
+<div class="floating-motto">
+    <div class="line1">It’s not vintage.</div>
+    <div class="line2">It’s shared.</div>
+</div>
+<img src="/images/women.png" class="image-floating image-left" alt="Left Side Women">
+<img src="/images/beach-woman.png" class="image-floating image-right" alt="Right Side Woman">
 <main>
     <div class="welcome mt-1 mb-4">
         <p class="mySticky bg-gray text-dark user" th:text="${'Welcome ' + user.username}"></p>
         <div class="row mt-1 mb-2">
             <div class="col-6 mt-1 mb-1">
-                <div class="home-fields" style="height: 30vh; overflow: auto">
+                <div class="home-fields closet-bg" style="height: 30vh; overflow: auto">
                     <h3 class="my-stamps">
                         My Lending Closet
                     </h3>
@@ -21,7 +27,7 @@
             </div>
 
             <div class="col-6 mt-1 mb-1">
-                <div class="home-fields" style="height: 30vh; overflow: auto">
+                <div class="home-fields offers-bg" style="height: 30vh; overflow: auto">
                     <h3 class="my-stamps">Offered Items</h3>
                     <p>What others are sharing — take a look.</p>
 
@@ -48,7 +54,9 @@
             </div>
             <div class="col-6 mt-1 mb-1">
                 <div class="home-fields" style="height: 30vh; overflow: auto">
-                    <h3 class="my-stamps">Our Eco Surveys</h3>
+                    <h3 class="my-stamps eco-heading"><img src="/images/clover.png" class="eco-icon" alt="Eco Icon">
+                    Our Eco Surveys
+                    </h3>
                     <p>
                        Explore our eco surveys and learn more about the causes.<br>
                        Quick votes. Real causes. Make your impact here.<br>
@@ -149,6 +157,7 @@
             </div>
         </div>
         </div>
+
 </main>
 <footer class="footer bg-transparent py-2">
 </footer>

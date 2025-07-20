@@ -41,7 +41,7 @@ public class PurchaseServiceTest {
 
     @Test
     void givenValidItemPurchaseRequest_whenCreatePurchase_thenPurchaseIsSaved() {
-        // Arrange
+
         UUID itemId = UUID.randomUUID();
         User user = new User();
         Item item = new Item();
@@ -73,10 +73,10 @@ public class PurchaseServiceTest {
         when(itemService.getItemById(itemId)).thenReturn(item);
         when(purchaseRepository.save(any(ItemPurchase.class))).thenReturn(itemPurchase);
 
-        // Act
+
         ItemPurchase savedPurchase = purchaseService.createPurchase(request, user);
 
-        // Assert
+
         assertThat(savedPurchase).isNotNull();
         assertThat(savedPurchase.getName()).isEqualTo("Test Item");
         verify(purchaseRepository).save(any(ItemPurchase.class));
@@ -84,7 +84,7 @@ public class PurchaseServiceTest {
 
     @Test
     void givenInvalidItemId_whenCreatePurchase_thenThrowsException() {
-        // Arrange
+
         UUID invalidItemId = UUID.randomUUID();
         User user = new User();
         ItemPurchaseRequest request = ItemPurchaseRequest.builder()
@@ -93,24 +93,24 @@ public class PurchaseServiceTest {
 
         when(itemService.getItemById(invalidItemId)).thenThrow(new DomainException("Item not found"));
 
-        // Act & Assert
+
         assertThrows(DomainException.class, () -> purchaseService.createPurchase(request, user));
         verify(purchaseRepository, never()).save(any());
     }
 
     @Test
     void givenValidPurchaseId_whenGetById_thenReturnPurchase() {
-        // Arrange
+
         UUID purchaseId = UUID.randomUUID();
         ItemPurchase itemPurchase = new ItemPurchase();
         itemPurchase.setId(purchaseId);
 
         when(purchaseRepository.findById(purchaseId)).thenReturn(Optional.of(itemPurchase));
 
-        // Act
+
         ItemPurchase foundPurchase = purchaseService.getById(purchaseId);
 
-        // Assert
+
         assertThat(foundPurchase).isNotNull();
         assertThat(foundPurchase.getId()).isEqualTo(purchaseId);
         verify(purchaseRepository).findById(purchaseId);
@@ -118,28 +118,28 @@ public class PurchaseServiceTest {
 
     @Test
     void givenInvalidPurchaseId_whenGetById_thenThrowsException() {
-        // Arrange
+
         UUID invalidPurchaseId = UUID.randomUUID();
 
         when(purchaseRepository.findById(invalidPurchaseId)).thenReturn(Optional.empty());
 
-        // Act & Assert
+
         assertThrows(DomainException.class, () -> purchaseService.getById(invalidPurchaseId));
         verify(purchaseRepository).findById(invalidPurchaseId);
     }
 
     @Test
     void givenExistingPurchases_whenGetAllByOwnerId_thenReturnList() {
-        // Arrange
+
         UUID ownerId = UUID.randomUUID();
         List<ItemPurchase> purchases = List.of(new ItemPurchase(), new ItemPurchase());
 
         when(purchaseRepository.findByOwnerId(ownerId)).thenReturn(purchases);
 
-        // Act
+
         List<ItemPurchase> result = purchaseService.getAllByOwnerId(ownerId);
 
-        // Assert
+
         assertThat(result).hasSize(2);
         verify(purchaseRepository).findByOwnerId(ownerId);
     }

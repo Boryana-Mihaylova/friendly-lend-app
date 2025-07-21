@@ -9,19 +9,19 @@
         <div class="row mt-1 mb-2">
             <div class="col-12 mt-1 mb-1">
                 <div class="my-closet">
-                    <h2 class="text-center mb-4">My Survey Support</h2>
+                    <h2 class="text-center mb-4">My Eco Vote</h2>
 
                     <div class="home-fields" style="height: 60vh; overflow: auto">
 
-                        <!-- Ако няма подаден surveyResponse -->
+
                         <div th:if="${noSupportYet}">
                             <p class="text-center fs-5">You haven’t supported any topic yet.</p>
                             <p class="text-center">
-                                Go back to the <a th:href="@{/home}">home page</a> and support the cause that inspire you!
+                                Go back to the <a th:href="@{/home}">home page</a> and support the cause that inspires you!
                             </p>
                         </div>
 
-                        <!-- Ако има подаден surveyResponse -->
+
                         <div th:if="${!noSupportYet}">
                             <table class="my-table table-striped shadow-sm bg-white">
                                 <thead>

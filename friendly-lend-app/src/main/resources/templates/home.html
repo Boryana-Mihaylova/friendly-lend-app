@@ -55,26 +55,25 @@
             <div class="col-6 mt-1 mb-1">
                 <div class="home-fields" style="height: 30vh; overflow: auto">
                     <h3 class="my-stamps eco-heading"><img src="/images/clover.png" class="eco-icon" alt="Eco Icon">
-                    Our Eco Surveys
+                        Make an Eco Impact
                     </h3>
                     <p>
-                       Explore our eco surveys and learn more about the causes.<br>
-                       Quick votes. Real causes. Make your impact here.<br>
-                       Support what matters — one click at a time.
+                        Explore our eco surveys and support with just one click.<br>
+                        One vote. Real change. Start here.
                     </p>
                     <div class="button-container mb-3">
-                        <a th:href="@{/surveys/user-survey}" class="btn btn-light">My Survey Support</a>
+                        <a th:href="@{/surveys/user-survey}" class="btn btn-light">My Supported Topic</a>
                     </div>
 
 
                     <p>
-                        <strong>SUSTAINABILITY</strong> – Sustainable clothing consumption reduces overproduction and preserves valuable natural resources.
-                        <a href="#" onclick="document.getElementById('sustainability-more').style.display='block'; this.style.display='none'; return false;">Read more</a>
+                        <strong>SUSTAINABILITY</strong> – Fast fashion is out. Smart fashion is in.
+                        <a href="#" onclick="document.getElementById('sustainability-more').style.display='block'; this.style.display='none'; return false;">Learn more</a>
                     </p>
                     <p id="sustainability-more" style="display: none;">
-                        Choosing sustainable fashion means prioritizing quality over quantity, reducing the pressure on textile production.
-                        It promotes brands that use eco-friendly materials and ethical labor.
-                        Supporting this movement helps build a more responsible and circular fashion industry.
+                        When you choose quality over quantity, you stop the overproduction madness.
+                        Support brands that care — for the planet and for people.
+                        Every smart choice pushes the fashion world toward sustainability.
                     </p>
                         <div class="button-container">
                             <a th:if="${user}"
@@ -86,13 +85,12 @@
                     <hr/>
 
                     <p>
-                        <strong>ENVIRONMENT</strong> – By renting clothes instead of buying new ones, we reduce plastic pollution from synthetic materials and waste.
-                        <a href="#" onclick="document.getElementById('environment-more').style.display='block'; this.style.display='none'; return false;">Read more</a>
+                        <strong>ENVIRONMENT</strong> – Renting clothes = less plastic, less pollution.
+                        <a href="#" onclick="document.getElementById('environment-more').style.display='block'; this.style.display='none'; return false;">Learn more</a>
                     </p>
                     <p id="environment-more" style="display: none;">
-                        Synthetic fabrics like polyester shed microplastics into the water system when washed.
-                        Renting clothes instead of constantly purchasing reduces the number of garments produced, which directly lowers pollution.
-                        This helps combat the fashion industry’s massive environmental footprint.
+                        Polyester and other synthetics shed microplastics when washed.
+                        Owning less means fewer clothes get made — and that means cleaner air, water, and oceans.
                     </p>
                     <div class="button-container">
                         <a th:if="${user}"
@@ -104,13 +102,12 @@
                     <hr/>
 
                     <p>
-                        <strong>RECYCLING</strong> – Giving clothes a second life through reuse extends their lifespan and reduces textile waste.
-                        <a href="#" onclick="document.getElementById('recycling-more').style.display='block'; this.style.display='none'; return false;">Read more</a>
+                        <strong>RECYCLING</strong> – Reuse is rebellion.
+                        <a href="#" onclick="document.getElementById('recycling-more').style.display='block'; this.style.display='none'; return false;">Learn more</a>
                     </p>
                     <p id="recycling-more" style="display: none;">
-                        Textile recycling keeps clothing out of landfills and reduces demand for new raw materials.
-                        Reusing items helps save water, energy, and chemicals needed in production.
-                        Supporting recycling contributes to a more sustainable and responsible fashion cycle.
+                        When you give clothes a second life, you cut waste and save resources.
+                        It’s not just green — it’s bold, responsible, and 100% you.
                     </p>
                     <div class="button-container">
                         <a th:if="${user}"

@@ -41,6 +41,7 @@ public class IndexController {
         this.surveyService = surveyService;
     }
 
+
     @GetMapping("/")
     public String getIndexPage() {
 

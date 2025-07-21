@@ -28,7 +28,7 @@ public class DeliveryLocationService {
         DeliveryLocation existing = pickupLocationRepository.findByUserId(user.getId());
 
         if (existing != null) {
-            // редактирай съществуващата локация
+
             existing.setLocation(locationEditRequest.getLocation());
             existing.setTown(locationEditRequest.getTown());
             return pickupLocationRepository.save(existing);

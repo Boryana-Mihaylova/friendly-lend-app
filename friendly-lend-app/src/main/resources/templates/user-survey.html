@@ -17,13 +17,13 @@
                         <div th:if="${noSupportYet}">
                             <p class="text-center fs-5">You haven’t supported any topic yet.</p>
                             <p class="text-center">
-                                Go back to the <a th:href="@{/home}">home page</a> and support the causes that inspire you!
+                                Go back to the <a th:href="@{/home}">home page</a> and support the cause that inspire you!
                             </p>
                         </div>
 
                         <!-- Ако има подаден surveyResponse -->
                         <div th:if="${!noSupportYet}">
-                            <table class="my-table table-striped table-dark table-bordered text-center">
+                            <table class="my-table table-striped shadow-sm bg-white">
                                 <thead>
                                 <tr>
                                     <th>Subject</th>
@@ -44,13 +44,7 @@
         </div>
     </div>
 </main>
-
 <footer class="footer bg-transparent py-2">
-    <div class="container-fluid text-center">
-        <div class="footer-background footer-text fixed-bottom">
-            &copy; 2025 FriendlyLend. All rights reserved.
-        </div>
-    </div>
 </footer>
 </body>
 </html>

@@ -115,7 +115,7 @@ public class ItemController {
     public String rentItem(@PathVariable UUID itemId, @AuthenticationPrincipal AuthenticationMetadata auth) {
         User borrower = userService.getById(auth.getUserId());
 
-        // Обновява артикула и му закача borrower
+
         itemService.markAsBorrowed(itemId, borrower);
 
         return "redirect:/items/offers";

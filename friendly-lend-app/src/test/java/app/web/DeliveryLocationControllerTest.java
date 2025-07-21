@@ -51,7 +51,7 @@ public class DeliveryLocationControllerTest {
                 false
         );
 
-        // Поставяме го като principal в security context
+
         SecurityContextHolder.getContext().setAuthentication(
                 new TestingAuthenticationToken(authenticationMetadata, null, "ROLE_USER")
         );

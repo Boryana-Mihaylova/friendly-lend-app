@@ -1,9 +1,11 @@
+
+
 .w-15 {
     width: 15%;
 }
 
 .bg-gray {
-    background-color: #d58940;
+    background-color: rgba(9, 66, 113, 0.56);
 }
 
 .bg-nav {
@@ -24,7 +26,9 @@ nav {
 }
 
 nav a {
-    color: #daa05a;
+    color: rgba(11, 38, 80, 0.56);
+    font-weight: 600;
+    text-shadow: 1px 1px 6px rgba(158, 181, 204, 0.6);
 }
 
 nav .home {
@@ -49,10 +53,10 @@ body > nav > div.links > li {
     padding-right: 1em;
 }
 
-/* Промяна на фона на body на бледо оранжев */
+
 body {
-    background-color: #ffe6cc;  /* Бледо оранжев фон вместо картинка */
-    background-image: none;  /* Премахване на картинката за фон */
+    background-color: rgb(55, 98, 129);
+    background-image: none;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -72,9 +76,9 @@ textarea {
     position: relative;
     border-radius: 15px;
     margin-top: 8em;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Увеличен контраст на сенките */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     padding: 2em;
-    background: rgba(255, 255, 255, 0.85); /* Полупрозрачен бял фон */
+    background: rgba(255, 255, 255, 0.85);
     max-width: 1200px;
     text-align: center;
     margin-right: auto;
@@ -86,10 +90,7 @@ textarea {
     width: 60%;
     transition: 0.1s ease-in;
     margin-top: 6em;
-    /*-moz-outline-radius: 12px;*/
-    /*outline: 2px solid #9f9fa1;*/
-    /*outline-offset: -8px;*/
-    background-color: rgb(217, 187, 161);
+    background-color: rgb(55, 98, 129);
 }
 
 .my-table {
@@ -144,7 +145,7 @@ textarea {
 
 .home-fields {
     border-radius: 6px;
-    background-color: rgba(39 41 42 / 40%);
+    background-color: rgba(131, 139, 143, 0.4);
     backdrop-filter: blur(15px);
     margin-bottom: 8px;
     border: #b3b8bd solid 1px;
@@ -157,7 +158,6 @@ ul li {
 }
 
 ul li:hover {
-    /*transform: translateY(-1px);*/
     background-color: #98999a;
     border: white solid 2px;
 }
@@ -281,17 +281,16 @@ footer {
     display: none;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     text-align: center;
-    padding-top: 50px; /* Adjust padding to center content vertically */
+    padding-top: 50px;
     box-sizing: border-box;
 }
 
 .preview {
     width: 35%;
     display: block;
-    /*aspect-ratio: 1/1;*/
     height: auto;
     margin: 0.5em auto;
     border-radius: 12px;
@@ -328,9 +327,10 @@ a:hover {
 }
 
 .footer-text {
-    color: white;
-    font-size: 1.4em;
-    font-weight: bold;
+    color: #092550;
+    font-weight: 600;
+    text-shadow: 1px 1px 6px rgba(158, 181, 204, 0.6);
+    font-size: 0.95em;
 }
 
 .count, .user {
@@ -343,44 +343,59 @@ a:hover {
 }
 
 .btn-custom-light {
-    background-color: #f8f9fa;  /* светло сив фон */
-    color: #333;  /* тъмен текст */
-    border: 1px solid #ccc;  /* светла рамка */
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc;
 }
 
 .btn-custom-light:hover {
-    background-color: #e2e6ea;  /* по-тъмен сив при ховър */
+    background-color: #e2e6ea;
 }
 
 .button-container {
-    display: inline-block; /* За да не заема цялото пространство */
-    padding: 10px; /* Отстояние около бутона */
-    background-color: #fff; /* Бял фон */
-    border-radius: 8px; /* Заоблени краища */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Лека сянка */
-    margin-top: 20px; /* Разстояние от горната част */
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .btn-light {
-    border-radius: 6px; /* Заоблени краища на бутона */
-    padding: 10px 20px; /* Размер на бутона */
+    border-radius: 6px;
+    padding: 10px 20px;
 }
 
 .btn-light:hover {
-    background-color: #e2e6ea; /* Потъмняване при ховър */
+    background-color: #e2e6ea;
 }
 
 .logo-container {
-    height: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 5rem;
 }
 
+
+
 .logo-big {
-    display: inline-block;
-    max-width: 700px;
+    display: block;
+    text-align: center;
+}
+
+.logo-big img {
+    max-width: 650px;
+}
+
+.app-motto {
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #3c627b;
+    margin-top: 1.2rem;
+    text-align: center;
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.3);
 }
 
 .images-thumb {
@@ -459,3 +474,133 @@ label {
     box-shadow: 0 0 15px white;
     background-color: white;
 }
+
+.btn-light {
+    text-transform: none;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+.btn-light:hover {
+    background-color: #dee9f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.image-floating {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.85;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.image-left {
+    left: -100px;
+    bottom: -40px;
+    width: 700px;
+    opacity: 0.85;
+}
+
+
+.image-right {
+    right: -40px;
+
+    bottom: -40px;
+
+    width: 500px;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+
+
+    mask-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0) 100%);
+
+    -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0) 100%);
+
+}
+
+.closet-bg {
+    background-image: url('/images/denim-jumpsuit.png');
+    background-size: cover;
+    background-position: center 15%;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.7);
+    //background-blend-mode: lighten;
+    border-radius: 12px;
+    color: #1a1a1a;
+    padding: 1.2em;
+}
+
+.my-stamps {
+
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1.6);
+}
+
+.floating-motto {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    position: absolute;
+    top: 180px;     /* колко надолу от горе – коригирай по вкус */
+    right: 80px;    /* колко вляво от десния ръб */
+    z-index: 2;
+    text-align: right;
+    font-size: 1.5rem;
+    color: white;
+    pointer-events: none;
+}
+
+.floating-motto .line1,
+.floating-motto .line2 {
+    opacity: 0;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+}
+
+/* 🕒 Първи ред – появява се след 1 секунда */
+.line1 {
+    animation: fadeInLine 7s ease-in-out 4s forwards;
+}
+
+/* 🕒 Втори ред – появява се след 3 секунди */
+.line2 {
+    animation: fadeInLine 7s ease-in-out 7s forwards;
+}
+
+@keyframes fadeInLine {
+    0%   { opacity: 0; transform: translateY(40px) scale(0.95); }
+    15%  { opacity: 1; transform: translateY(0) scale(1); }
+    85%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+}
+
+.eco-heading {
+    display: flex;
+    justify-content: center;   /* центрира хоризонтално */
+
+    align-items: center;
+    gap: 10px;
+}
+
+.eco-icon {
+    width: 35px;
+    height: auto;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.eco-icon:hover {
+    transform: rotate(-10deg) scale(1.05);
+}
+
+
+

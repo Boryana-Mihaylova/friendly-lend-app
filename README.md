@@ -1,6 +1,6 @@
-# 🍀 Friendly Lend App
+# 🍀 FriendlyLend App
 
-Friendly Lend is a full-featured web application built with Spring Boot and Thymeleaf that allows users to lend and borrow clothes and accessories within a trusted, close-knit community. The app includes item management, favorite lists, user roles, and real-time integration with a separate REST microservice (`ecoSurvey-svc`). This service enables users to express their views on environmental topics such as sustainability, recycling, and pollution via interactive surveys.
+FriendlyLend is a full-featured web application built with Spring Boot and Thymeleaf that allows users to lend and borrow clothes and accessories within a trusted, close-knit community. The app includes item management, favorite lists, user roles, and real-time integration with a separate REST microservice (`ecoSurvey-svc`). This service enables users to express their views on environmental topics such as sustainability, recycling, and pollution via interactive surveys.
 
 ---
 
@@ -8,7 +8,7 @@ Friendly Lend is a full-featured web application built with Spring Boot and Thym
 
 The platform is targeted at Generation Z – active, socially conscious, and digitally connected users who are looking for sustainable and alternative ways to engage with fashion.
 
-Friendly Lend promotes reuse and sharing of fashion items, with every item available for a symbolic price of €1.
+FriendlyLend promotes reuse and sharing of fashion items, with every item available for a symbolic price of €1.
 
 A key feature is the integration with an eco-awareness survey. Users can explore short, high-impact environmental themes like **SUSTAINABILITY**, **ENVIRONMENT**, and **RECYCLING** – and express their support with just one click.
 
@@ -36,7 +36,7 @@ This system helps maintain a clean and active item catalog on the platform.
 - 🧾 User registration and login with roles: `USER` and `ADMIN`
 - 📦 Add, view, and remove items
 - ❤️ Mark items as favorites
-- 🌍 Integrated eco-survey via REST API
+- 🌍 Integrated ecoSurvey via REST API
 - 🔔 Notification system (auto-warnings for inactive items)
 - 🕒 Scheduled tasks (check item activity every 60 days)
 - 🛠️ Admin panel for managing users (activate/deactivate accounts and change roles)
@@ -195,7 +195,7 @@ app
 
 ---
 
-### 🌿 Eco Survey
+### 🌿 EcoSurvey
 
 **Survey Confirmation Page**  
 ![Confirmation](screenshots/survey_confirmation.PNG)

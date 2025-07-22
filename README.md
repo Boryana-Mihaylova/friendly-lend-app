@@ -10,7 +10,7 @@ The platform is targeted at Generation Z – active, socially conscious, and dig
 
 Friendly Lend promotes reuse and sharing of fashion items, with every item available for a symbolic price of €1.
 
-A key feature is the integration with an eco-awareness survey system. Users can explore short, high-impact environmental themes like **SUSTAINABILITY**, **ENVIRONMENT**, and **RECYCLING** – and express their support with just one click.
+A key feature is the integration with an eco-awareness survey. Users can explore short, high-impact environmental themes like **SUSTAINABILITY**, **ENVIRONMENT**, and **RECYCLING** – and express their support with just one click.
 
 ---
 
@@ -36,7 +36,7 @@ This system helps maintain a clean and active item catalog on the platform.
 - 🧾 User registration and login with roles: `USER` and `ADMIN`
 - 📦 Add, view, and remove items
 - ❤️ Mark items as favorites
-- 🌍 Integrated eco-surveys via REST API
+- 🌍 Integrated eco-survey via REST API
 - 🔔 Notification system (auto-warnings for inactive items)
 - 🕒 Scheduled tasks (check item activity every 60 days)
 - 🛠️ Admin panel for managing users (activate/deactivate accounts and change roles)
@@ -56,6 +56,9 @@ Users can choose to support one of the following:
 - **RECYCLING** – Promoting reuse and reducing textile waste
 
 Each user may select **one topic** to support. Their vote is submitted via REST and stored in the ecoSurvey service, which maintains its own database.
+
+Additionally, the Friendly Lend app retrieves **aggregated voting statistics** from the REST API. These results are **visible only to administrators**, and are displayed in the admin dashboard to provide insight into user support for each topic.
+
 
 ---
 

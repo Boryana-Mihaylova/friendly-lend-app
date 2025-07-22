@@ -1,10 +1,10 @@
-# 👗 Friendly Lend App
+# 🍀 Friendly Lend App
 
 Friendly Lend is a full-featured web application built with Spring Boot and Thymeleaf that allows users to lend and borrow clothes and accessories within a trusted, close-knit community. The app includes item management, favorite lists, user roles, and real-time integration with a separate REST microservice (`ecoSurvey-svc`). This service enables users to express their views on environmental topics such as sustainability, recycling, and pollution via interactive surveys.
 
 ---
 
-## 📘 About the Project
+## 🌱 About the Project
 
 The platform is targeted at Generation Z – active, socially conscious, and digitally connected users who are looking for sustainable and alternative ways to engage with fashion.
 

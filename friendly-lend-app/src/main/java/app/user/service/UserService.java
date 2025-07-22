@@ -64,8 +64,7 @@ public class UserService implements UserDetailsService {
 
         Notification notification = Notification.builder()
                 .user(user)
-                .message("Items inactive for over 60 days may be archived to improve visibility on the platform. " +
-                        "You will be notified in your profile if this applies.")
+                .message("Welcome to FriendlyLend! Items inactive for over 60 days may be archived to improve visibility on the platform. You’ll be notified in your profile if this applies.")
                 .createdAt(new Date())
                 .read(false)
                 .build();

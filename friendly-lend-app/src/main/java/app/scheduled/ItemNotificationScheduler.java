@@ -34,7 +34,7 @@ public class ItemNotificationScheduler {
         for (Item item : oldItems) {
             Notification notification = Notification.builder()
                     .user(item.getOwner())
-                    .message("Здравей! Артикулът ти „" + item.getName() + "“ не е бил наеман от 60 дни. Ако интересът остане нисък, той ще бъде архивиран автоматично след 7 дни.")
+                    .message("Hi! Your item \"" + item.getName() + "\" hasn't been borrowed in the last 60 days. If interest remains low, it will be automatically archived in 7 days.")
                     .createdAt(new Date())
                     .read(false)
                     .build();
@@ -42,6 +42,6 @@ public class ItemNotificationScheduler {
             notificationRepository.save(notification);
         }
 
-        System.out.println("✔ Изпратени известия за " + oldItems.size() + " артикула без активност.");
+        System.out.println("✔ Notifications sent for " + oldItems.size() + " inactive items.");
     }
 }

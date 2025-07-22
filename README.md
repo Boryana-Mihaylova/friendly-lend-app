@@ -119,8 +119,8 @@ app
 
 2. Configure your database credentials in `application-secret.properties` (this file is excluded via `.gitignore`):
    ```properties
-   spring.datasource.username=your_user
-   spring.datasource.password=your_password
+   DB_USERNAME=your-db-username
+   DB_PASSWORD=your-db-password
    ```
 
 3. Run the application:

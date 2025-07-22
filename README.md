@@ -1,35 +1,35 @@
+# 👗 Friendly Lend App
 
-# 🌱 Friendly Lend App
-
-**Friendly Lend App** is a full-featured web application built with Spring Boot and Thymeleaf that enables users to register, log in, and share items by lending or borrowing them. The app includes item management, favorites, user roles, and a live connection to a separate REST microservice (`ecoSurvey-svc`) that allows users to express their stance on environmental topics like sustainability, recycling, and pollution through interactive surveys.
+Friendly Lend is a full-featured web application built with Spring Boot and Thymeleaf that allows users to lend and borrow clothes and accessories within a trusted, close-knit community. The app includes item management, favorite lists, user roles, and real-time integration with a separate REST microservice (`ecoSurvey-svc`). This service enables users to express their views on environmental topics such as sustainability, recycling, and pollution via interactive surveys.
 
 ---
 
 ## 📘 About the Project
 
-Friendly Lend is a community-driven lending platform where users can offer and borrow everyday items. The application promotes sustainability and reduced consumption by encouraging item reuse and sharing. Users can interact with items, mark them as favorites, and access personal item lists.
+The platform is targeted at Generation Z – active, socially conscious, and digitally connected users who are looking for sustainable and alternative ways to engage with fashion.
 
-A unique feature of Friendly Lend is its integration with an eco-awareness survey system. Users can explore short, impactful environmental topics such as **SUSTAINABILITY**, **ENVIRONMENT**, and **RECYCLING** — and express their support with just one click. One vote. Real change.
+Friendly Lend promotes reuse and sharing of fashion items, with every item available for a symbolic price of €1.
+
+A key feature is the integration with an eco-awareness survey system. Users can explore short, high-impact environmental themes like **SUSTAINABILITY**, **ENVIRONMENT**, and **RECYCLING** – and express their support with just one click.
 
 ---
 
-### 🌍 Vision & Target Audience
+## 🌍 Future Vision
 
-Friendly Lend is targeted at **Generation Z** – active, socially conscious, and digitally connected users who are looking for sustainable and alternative ways to engage with fashion.
+- 💬 Users will be encouraged to meet in person to exchange items at convenient locations such as universities, cafés, or gyms – streamlining the process and avoiding delivery fees.
 
-Future plans include:
-- 💬 In-person item exchanges at popular meeting spots like cafés, campuses, and gyms
-- 🎯 Fashion bidding features where users with highly desired items are recognized as trendsetters
+- 🎯 Future versions may include bidding, where certain items may go above the symbolic €1. Users whose fashion items are most desired and frequently borrowed will be recognized as trendsetters in the community.
 
 ---
 
 ## 🔔 Notifications & Scheduling
 
-Upon user registration, a default notification is sent explaining that item activity is monitored. If an item remains unborrowed for more than 60 days, a scheduled task automatically sends a warning notification to the item's owner, encouraging them to take action or risk archival of the item.
+After registration, each user receives a default notification explaining that their items' activity is monitored. If an item remains unborrowed for more than 60 days, a scheduled task automatically sends a warning notification to the owner that the item may soon be archived.
 
-This system ensures a clean and active catalog of available items on the platform.
+This system helps maintain a clean and active item catalog on the platform.
 
----
+
+
 
 ## 🚀 Features
 
@@ -39,6 +39,7 @@ This system ensures a clean and active catalog of available items on the platfor
 - 🌍 Integrated eco-surveys via REST API
 - 🔔 Notification system (auto-warnings for inactive items)
 - 🕒 Scheduled tasks (check item activity every 60 days)
+- 🛠️ Admin panel for managing users (activate/deactivate accounts and change roles)
 - 🛒 Item purchase and delivery location modules
 - 🧼 Global exception handling
 
@@ -46,13 +47,15 @@ This system ensures a clean and active catalog of available items on the platfor
 
 ## 🔗 Integration with `ecoSurvey-svc` (REST API)
 
-This application connects to a separate REST API (`ecoSurvey-svc`) that enables users to participate in concise ecological surveys directly from the Friendly Lend interface. Topics include:
+This application connects to a separate REST API (`ecoSurvey-svc`) that allows users to express support for one of three key environmental topics directly from the Friendly Lend interface.
+
+Users can choose to support one of the following:
 
 - **SUSTAINABILITY** – Supporting smart fashion and conscious choices
-- **ENVIRONMENT** – Raising awareness about pollution and plastic reduction
-- **RECYCLING** – Embracing reuse and reducing textile waste
+- **ENVIRONMENT** – Raising awareness about plastic pollution and environmental impact
+- **RECYCLING** – Promoting reuse and reducing textile waste
 
-Votes are submitted via REST communication and stored in the ecoSurvey service, which maintains its own database.
+Each user may select **one topic** to support. Their vote is submitted via REST and stored in the ecoSurvey service, which maintains its own database.
 
 ---
 
@@ -218,7 +221,7 @@ app
 
 ## 👩‍💻 Author
 
-Developed as a final project in the Advanced Java Web course at SoftUni (2025)
+Developed as a final project in the Spring Advanced course at SoftUni (2025).
 
 ---
 

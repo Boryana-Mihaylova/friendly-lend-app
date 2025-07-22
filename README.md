@@ -47,7 +47,7 @@ This system helps maintain a clean and active item catalog on the platform.
 
 ## 🔗 Integration with `ecoSurvey-svc` (REST API)
 
-This application connects to a separate REST API (`ecoSurvey-svc`) that allows users to express support for one of three key environmental topics directly from the Friendly Lend interface.
+This application connects to a separate REST API (`ecoSurvey-svc`) that allows users to express support for one of three key environmental topics directly from the FriendlyLend interface.
 
 Users can choose to support one of the following:
 
@@ -57,7 +57,7 @@ Users can choose to support one of the following:
 
 Each user may select **one topic** to support. Their vote is submitted via REST and stored in the ecoSurvey service, which maintains its own database.
 
-Additionally, the Friendly Lend app retrieves **aggregated voting statistics** from the REST API. These results are **visible only to administrators**, and are displayed in the admin dashboard to provide insight into user support for each topic.
+Additionally, the FriendlyLend app retrieves **aggregated voting statistics** from the REST API. These results are **visible only to administrators**, and are displayed in the admin dashboard to provide insight into user support for each topic.
 
 
 ---

@@ -133,15 +133,14 @@ app
 
 ### 🔐 Authentication
 
+**Index Page (Welcome)**  
+![Index](screenshots/index.PNG)
 
 **Register Page**  
 ![Register](screenshots/register.PNG)
 
 **Login Page**  
 ![Login](screenshots/login.PNG)
-
-**Index Page (Welcome)**  
-![Index](screenshots/index.PNG)
 
 ---
 

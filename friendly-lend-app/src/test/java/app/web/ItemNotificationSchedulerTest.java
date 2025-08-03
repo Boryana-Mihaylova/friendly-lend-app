@@ -60,7 +60,7 @@ public class ItemNotificationSchedulerTest {
 
         Notification savedNotification = captor.getValue();
         assertThat(savedNotification.getUser()).isEqualTo(user);
-        assertThat(savedNotification.getMessage()).contains("не е бил наеман от 60 дни");
+        assertThat(savedNotification.getMessage()).contains("hasn't been borrowed in the last 60 days");
         assertThat(savedNotification.isRead()).isFalse();
     }
 }

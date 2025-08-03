@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "delivery_locations")
 public class DeliveryLocation {
 
     @Id

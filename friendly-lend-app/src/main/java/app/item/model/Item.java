@@ -26,6 +26,7 @@ import jakarta.persistence.PrePersist;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "items")
 public class Item {
 
     @Id
